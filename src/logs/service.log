@@ -1,0 +1,116 @@
+2025-01-17 13:01:51,482 - api.v1.users.subadmin.service - INFO - parsed_data: {'name': 'Departmental Dues', 'description': 'dept dues for maths 300 level', 'amount': Decimal('3000'), 'level': '300', 'department': 'Mathematics', 'academic_session': 'Academic Session 2024/2025', 'bank_name': 'first bank of nigeria', 'account_number': '3112525638', 'percentage_charge': '0'}
+2025-01-17 13:01:51,832 - api.v1.users.subadmin.service - INFO - Creating payment item for organization: Unical, department: Mathematics
+2025-01-17 13:01:51,861 - api.v1.users.subadmin.service - INFO - 011
+2025-01-17 13:01:51,864 - api.v1.users.subadmin.service - INFO - Creating payment item for organization: Unical, department: Mathematics, level: 300, session: Academic Session 2024/2025
+2025-01-17 13:01:52,210 - api.v1.users.subadmin.service - INFO - session_instance: <Session(name='Academic Session 2024/2025', active='True')>
+2025-01-17 13:01:52,538 - api.v1.users.subadmin.service - INFO - finalized parsed_data: {'name': 'Departmental Dues', 'description': 'dept dues for maths 300 level', 'amount': Decimal('3000'), 'level': <Level(name='300')>, 'department': <Department(name='Mathematics')>, 'academic_session': <Session(name='Academic Session 2024/2025', active='True')>, 'bank_name': 'first bank of nigeria', 'account_number': '3112525638', 'percentage_charge': '0', 'organization': <Organization(name='University Of Calabar', email='edu@unical.com')>}
+2025-01-17 13:01:52,543 - api.v1.users.subadmin.service - INFO - account data: {'business_name': 'Mathematics - Departmental Dues', 'settlement_bank': '011', 'account_number': '3112525638', 'percentage_charge': '0'}
+2025-01-17 13:01:52,547 - api.v1.users.subadmin.service - INFO - sk_test_5549e0f982fe151fd1f2d76287d841a5ed9fd11a
+2025-01-17 13:01:53,300 - api.v1.users.subadmin.service - INFO - Payment initialized: {'status': True, 'message': 'Subaccount created', 'data': {'business_name': 'Mathematics - Departmental Dues', 'account_number': '3112525638', 'percentage_charge': 0, 'settlement_bank': 'First Bank of Nigeria', 'currency': 'NGN', 'bank': 7, 'integration': 1358366, 'domain': 'test', 'account_name': 'ADEYEMI FAVOUR CHINWE', 'product': 'collection', 'managed_by_integration': 1358366, 'subaccount_code': 'ACCT_z767la7glnzo61s', 'is_verified': False, 'settlement_schedule': 'AUTO', 'active': True, 'migrate': False, 'id': 1230746, 'createdAt': '2025-01-17T12:02:01.023Z', 'updatedAt': '2025-01-17T12:02:01.023Z'}}
+2025-01-17 13:01:53,371 - api.v1.users.subadmin.service - INFO - payment_item: <PaymentItem(name='Departmental Dues', amount='3000')>
+2025-01-17 13:01:53,751 - api.v1.users.subadmin.service - INFO - Created payment item
+2025-01-17 13:02:18,518 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:02:19,283 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:02:19,311 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:02:19,533 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:02:19,871 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:02:19,979 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:02:20,603 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:02:24,239 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:02:25,148 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:02:25,396 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:02:29,481 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:02:29,979 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:29,992 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:02:30,204 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:03:01,962 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:03:02,142 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:03:02,149 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:03:03,057 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:09:43,757 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:09:43,900 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:09:44,041 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:09:44,122 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:09:44,301 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:09:44,433 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:09:44,637 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:09:52,548 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:09:52,911 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:09:53,099 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:09:55,401 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:09:55,586 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:55,588 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:09:55,808 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:10:37,494 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:10:37,677 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:10:37,680 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:10:38,562 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:01,711 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:02,021 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:02,067 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:02,221 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:02,437 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:02,625 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:02,630 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:03,942 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:04,304 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:04,482 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:06,600 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:11:06,792 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:06,798 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:11:06,986 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:11:20,464 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:11:20,658 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:20,662 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:11:21,561 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:41,639 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:41,816 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:42,189 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:42,191 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:42,464 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:46,053 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:46,066 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:46,451 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:46,604 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:46,635 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:48,068 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:48,611 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:12:03,449 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:12:03,816 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:12:04,021 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:12:07,407 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:12:07,593 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:07,600 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:12:07,776 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:12:20,414 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:12:20,596 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:20,600 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:12:21,494 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:24,253 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:24,908 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:25,838 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:26,379 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:26,516 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:26,727 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:26,945 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:27,495 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:27,839 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:28,027 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:32,861 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:32,861 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:32,883 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:33,217 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:33,396 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:33,427 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:33,442 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:36,528 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:36,889 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:37,075 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:40,800 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:13:40,991 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:40,994 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:13:41,176 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:13:55,393 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:13:55,597 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:55,599 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:13:56,737 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]

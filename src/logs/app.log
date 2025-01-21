@@ -1,0 +1,1620 @@
+2025-01-17 12:53:56,452 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:53:56] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 12:53:56,452 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:53:56] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 12:53:57,658 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:53:57,658 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:53:57,700 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 12:53:57,700 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 12:53:57,725 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:53:57,725 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:53:58,280 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:53:58,280 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:53:58,324 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:53:58,324 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:53:58,383 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:53:58,383 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:53:58,531 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 12:53:58,531 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 12:53:58,765 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:53:58,765 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:53:59,349 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:53:59,349 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:53:59,367 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:53:59,367 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:53:59,414 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 12:53:59,414 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 12:53:59,608 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 12:53:59,608 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 12:54:00,026 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:54:00] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 12:54:00,026 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:54:00] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 12:54:36,974 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:54:36] "OPTIONS /api/admin/payment/create HTTP/1.1" 200 -
+2025-01-17 12:54:36,974 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:54:36] "OPTIONS /api/admin/payment/create HTTP/1.1" 200 -
+2025-01-17 12:54:37,610 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:54:37,610 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:54:37,613 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 12:54:37,613 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 12:54:37,615 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:54:37,615 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:54:38,102 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:54:38,102 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:54:38,105 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:54:38,105 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:54:38,109 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:54:38,109 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:54:38,112 - api.v1.users.subadmin.service - INFO - parsed_data: {'name': 'Departmental Dues', 'description': 'dept dues for 300 level maths', 'amount': Decimal('3000'), 'level': '300', 'department': 'Mathematics', 'academic_session': 'Academic Session 2024/2025', 'bank_name': 'access bank', 'account_number': '3112322567', 'percentage_charge': '0'}
+2025-01-17 12:54:38,112 - api.v1.users.subadmin.service - INFO - parsed_data: {'name': 'Departmental Dues', 'description': 'dept dues for 300 level maths', 'amount': Decimal('3000'), 'level': '300', 'department': 'Mathematics', 'academic_session': 'Academic Session 2024/2025', 'bank_name': 'access bank', 'account_number': '3112322567', 'percentage_charge': '0'}
+2025-01-17 12:54:38,116 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:54:38,116 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:54:38,292 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:54:38,292 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:54:38,461 - api.v1.users.subadmin.service - INFO - Creating payment item for organization: Unical, department: Mathematics
+2025-01-17 12:54:38,461 - api.v1.users.subadmin.service - INFO - Creating payment item for organization: Unical, department: Mathematics
+2025-01-17 12:54:38,493 - api.v1.users.subadmin.service - INFO - 044
+2025-01-17 12:54:38,493 - api.v1.users.subadmin.service - INFO - 044
+2025-01-17 12:54:38,496 - api.v1.users.subadmin.service - INFO - Creating payment item for organization: Unical, department: Mathematics, level: 300, session: Academic Session 2024/2025
+2025-01-17 12:54:38,496 - api.v1.users.subadmin.service - INFO - Creating payment item for organization: Unical, department: Mathematics, level: 300, session: Academic Session 2024/2025
+2025-01-17 12:54:38,836 - api.v1.users.subadmin.service - INFO - session_instance: <Session(name='Academic Session 2024/2025', active='True')>
+2025-01-17 12:54:38,836 - api.v1.users.subadmin.service - INFO - session_instance: <Session(name='Academic Session 2024/2025', active='True')>
+2025-01-17 12:54:39,193 - api.v1.users.subadmin.service - INFO - finalized parsed_data: {'name': 'Departmental Dues', 'description': 'dept dues for 300 level maths', 'amount': Decimal('3000'), 'level': <Level(name='300')>, 'department': <Department(name='Mathematics')>, 'academic_session': <Session(name='Academic Session 2024/2025', active='True')>, 'bank_name': 'access bank', 'account_number': '3112322567', 'percentage_charge': '0', 'organization': <Organization(name='University Of Calabar', email='edu@unical.com')>}
+2025-01-17 12:54:39,193 - api.v1.users.subadmin.service - INFO - finalized parsed_data: {'name': 'Departmental Dues', 'description': 'dept dues for 300 level maths', 'amount': Decimal('3000'), 'level': <Level(name='300')>, 'department': <Department(name='Mathematics')>, 'academic_session': <Session(name='Academic Session 2024/2025', active='True')>, 'bank_name': 'access bank', 'account_number': '3112322567', 'percentage_charge': '0', 'organization': <Organization(name='University Of Calabar', email='edu@unical.com')>}
+2025-01-17 12:54:39,197 - api.v1.users.subadmin.service - INFO - account data: {'business_name': 'Mathematics - Departmental Dues', 'settlement_bank': '044', 'account_number': '3112322567', 'percentage_charge': '0'}
+2025-01-17 12:54:39,197 - api.v1.users.subadmin.service - INFO - account data: {'business_name': 'Mathematics - Departmental Dues', 'settlement_bank': '044', 'account_number': '3112322567', 'percentage_charge': '0'}
+2025-01-17 12:54:39,200 - api.v1.users.subadmin.service - INFO - sk_test_5549e0f982fe151fd1f2d76287d841a5ed9fd11a
+2025-01-17 12:54:39,200 - api.v1.users.subadmin.service - INFO - sk_test_5549e0f982fe151fd1f2d76287d841a5ed9fd11a
+2025-01-17 12:54:40,756 - api.v1.users.subadmin.service - INFO - Payment initialized: {'status': False, 'message': 'Account details are invalid', 'meta': {'nextStep': "Ensure that the value(s) you're passing are valid."}, 'type': 'validation_error', 'code': 'invalid_params'}
+2025-01-17 12:54:40,756 - api.v1.users.subadmin.service - INFO - Payment initialized: {'status': False, 'message': 'Account details are invalid', 'meta': {'nextStep': "Ensure that the value(s) you're passing are valid."}, 'type': 'validation_error', 'code': 'invalid_params'}
+2025-01-17 12:54:40,760 - api.v1.auth.service - ERROR - Unexpected error while checking permissions: 'data'
+2025-01-17 12:54:40,760 - api.v1.auth.service - ERROR - Unexpected error while checking permissions: 'data'
+2025-01-17 12:54:40,934 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:54:40] "[35m[1mPOST /api/admin/payment/create HTTP/1.1[0m" 500 -
+2025-01-17 12:54:40,934 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:54:40] "[35m[1mPOST /api/admin/payment/create HTTP/1.1[0m" 500 -
+2025-01-17 12:57:28,603 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:28] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:57:28,603 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:28] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:57:28,666 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:28] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 12:57:28,669 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:28] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:28,666 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:28] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 12:57:28,669 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:28] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:28,757 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:28] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:28,757 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:28] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:30,368 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:30] "[31m[1mGET /api/analytics/payments HTTP/1.1[0m" 401 -
+2025-01-17 12:57:30,368 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:30] "[31m[1mGET /api/analytics/payments HTTP/1.1[0m" 401 -
+2025-01-17 12:57:30,488 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:30] "[31m[1mGET /api/admin/department/all HTTP/1.1[0m" 401 -
+2025-01-17 12:57:30,488 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:30] "[31m[1mGET /api/admin/department/all HTTP/1.1[0m" 401 -
+2025-01-17 12:57:31,218 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:31] "[31m[1mGET /api/admin/department/all HTTP/1.1[0m" 401 -
+2025-01-17 12:57:31,218 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:31] "[31m[1mGET /api/admin/department/all HTTP/1.1[0m" 401 -
+2025-01-17 12:57:31,379 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:31] "[31m[1mGET /api/admin/subadmin/all HTTP/1.1[0m" 401 -
+2025-01-17 12:57:31,379 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:31] "[31m[1mGET /api/admin/subadmin/all HTTP/1.1[0m" 401 -
+2025-01-17 12:57:37,180 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:37] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:57:37,180 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:37] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:57:37,876 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:37] "[31m[1mGET /api/admin/subadmin/all HTTP/1.1[0m" 401 -
+2025-01-17 12:57:37,876 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:37] "[31m[1mGET /api/admin/subadmin/all HTTP/1.1[0m" 401 -
+2025-01-17 12:57:44,098 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:44] "OPTIONS /api/users/login HTTP/1.1" 200 -
+2025-01-17 12:57:44,098 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:44] "OPTIONS /api/users/login HTTP/1.1" 200 -
+2025-01-17 12:57:45,278 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:45,278 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:45,972 - api.v1.auth.service - INFO - User authenticated
+2025-01-17 12:57:45,972 - api.v1.auth.service - INFO - User authenticated
+2025-01-17 12:57:45,975 - api.v1.auth.users_auth - INFO - user: RoleEnum.ADMIN
+2025-01-17 12:57:45,975 - api.v1.auth.users_auth - INFO - user: RoleEnum.ADMIN
+2025-01-17 12:57:46,348 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:46] "POST /api/users/login HTTP/1.1" 200 -
+2025-01-17 12:57:46,348 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:46] "POST /api/users/login HTTP/1.1" 200 -
+2025-01-17 12:57:52,879 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:52] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:52,882 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:52] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:52,879 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:52] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:52,882 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:52] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:53,033 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:53] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:57:53,036 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:53] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 12:57:53,033 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:53] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:57:53,036 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:53] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 12:57:53,570 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:57:53,570 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:57:53,573 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 12:57:53,573 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 12:57:53,575 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:53,575 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:53,717 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:57:53,719 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:57:53,717 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:57:53,721 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:57:53,719 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:57:53,725 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 12:57:53,721 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:57:53,726 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 12:57:53,725 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 12:57:53,731 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 12:57:53,726 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 12:57:53,734 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:53,736 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:53,731 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 12:57:53,734 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:53,736 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:53,739 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:53,739 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:53,897 - api.v1.auth.service - INFO - User found: None
+2025-01-17 12:57:53,897 - api.v1.auth.service - INFO - User found: None
+2025-01-17 12:57:53,899 - api.v1.auth.service - ERROR - User not found
+2025-01-17 12:57:53,899 - api.v1.auth.service - ERROR - User not found
+2025-01-17 12:57:53,901 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:53,901 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,060 - api.v1.auth.service - INFO - User found: None
+2025-01-17 12:57:54,060 - api.v1.auth.service - INFO - User found: None
+2025-01-17 12:57:54,060 - api.v1.auth.service - INFO - User found: None
+2025-01-17 12:57:54,060 - api.v1.auth.service - INFO - User found: None
+2025-01-17 12:57:54,063 - api.v1.auth.service - ERROR - User not found
+2025-01-17 12:57:54,064 - api.v1.auth.service - ERROR - User not found
+2025-01-17 12:57:54,063 - api.v1.auth.service - ERROR - User not found
+2025-01-17 12:57:54,064 - api.v1.auth.service - ERROR - User not found
+2025-01-17 12:57:54,068 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,068 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,069 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,069 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,075 - api.v1.auth.service - INFO - User found: None
+2025-01-17 12:57:54,075 - api.v1.auth.service - INFO - User found: None
+2025-01-17 12:57:54,080 - api.v1.auth.service - ERROR - User not found
+2025-01-17 12:57:54,080 - api.v1.auth.service - ERROR - User not found
+2025-01-17 12:57:54,084 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,084 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,237 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,237 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,242 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:57:54,242 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:57:54,246 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:57:54,246 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:57:54,251 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 12:57:54,251 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 12:57:54,255 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,255 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,397 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,398 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,397 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,401 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:57:54,398 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,405 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:57:54,401 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:57:54,405 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:57:54,416 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:57:54,416 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:57:54,417 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,420 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:57:54,417 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,422 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,425 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 12:57:54,420 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:57:54,432 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:57:54,422 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,425 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 12:57:54,435 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 12:57:54,432 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:57:54,439 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,435 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 12:57:54,439 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,441 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:57:54,442 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,441 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:57:54,442 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,449 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 12:57:54,449 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 12:57:54,455 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,455 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:57:54,617 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,619 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,617 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,624 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,619 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,624 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:57:54,770 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 12:57:54,770 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 12:57:54,805 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 12:57:54,805 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 12:57:54,945 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:54] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:54,945 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:54] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:54,969 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 12:57:54,969 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 12:57:54,974 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 12:57:54,974 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 12:57:54,990 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:54] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 12:57:54,990 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:54] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 12:57:55,139 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:55] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:57:55,140 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:55] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:57:55,139 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:55] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:57:55,140 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:57:55] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 12:58:03,521 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:58:03] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:58:03,521 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:58:03] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:58:04,245 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:58:04,245 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:58:04,249 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 12:58:04,249 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 12:58:04,252 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:58:04,252 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:58:04,591 - api.v1.auth.service - INFO - User found: None
+2025-01-17 12:58:04,591 - api.v1.auth.service - INFO - User found: None
+2025-01-17 12:58:04,595 - api.v1.auth.service - ERROR - User not found
+2025-01-17 12:58:04,595 - api.v1.auth.service - ERROR - User not found
+2025-01-17 12:58:04,598 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:58:04,598 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:58:04,942 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:58:04,942 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:58:04,945 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:58:04,945 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:58:04,948 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:58:04,948 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:58:04,951 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 12:58:04,951 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 12:58:04,954 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:58:04,954 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:58:05,131 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:58:05,131 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:58:05,295 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 12:58:05,295 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 12:58:05,459 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 12:58:05,459 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 12:58:05,646 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:58:05] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:58:05,646 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:58:05] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 12:58:06,480 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:58:06] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 12:58:06,480 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:58:06] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 12:58:07,093 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:58:07,093 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 12:58:07,096 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 12:58:07,096 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 12:58:07,099 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:58:07,099 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:58:07,611 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:58:07,611 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:58:07,615 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:58:07,615 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 12:58:07,617 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:58:07,617 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 12:58:07,619 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 12:58:07,619 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 12:58:07,622 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:58:07,622 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 12:58:07,809 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:58:07,809 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:58:07,812 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:58:07,812 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 12:58:07,815 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 12:58:07,815 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 12:58:07,996 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 12:58:07,996 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 12:58:08,350 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:58:08] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 12:58:08,350 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 12:58:08] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:01:49,275 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:01:49] "OPTIONS /api/admin/payment/create HTTP/1.1" 200 -
+2025-01-17 13:01:49,275 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:01:49] "OPTIONS /api/admin/payment/create HTTP/1.1" 200 -
+2025-01-17 13:01:50,749 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:01:50,749 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:01:50,753 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:01:50,753 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:01:50,758 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:01:50,758 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:01:51,259 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:01:51,259 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:01:51,348 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:01:51,348 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:01:51,437 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:01:51,437 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:01:51,482 - api.v1.users.subadmin.service - INFO - parsed_data: {'name': 'Departmental Dues', 'description': 'dept dues for maths 300 level', 'amount': Decimal('3000'), 'level': '300', 'department': 'Mathematics', 'academic_session': 'Academic Session 2024/2025', 'bank_name': 'first bank of nigeria', 'account_number': '3112525638', 'percentage_charge': '0'}
+2025-01-17 13:01:51,482 - api.v1.users.subadmin.service - INFO - parsed_data: {'name': 'Departmental Dues', 'description': 'dept dues for maths 300 level', 'amount': Decimal('3000'), 'level': '300', 'department': 'Mathematics', 'academic_session': 'Academic Session 2024/2025', 'bank_name': 'first bank of nigeria', 'account_number': '3112525638', 'percentage_charge': '0'}
+2025-01-17 13:01:51,487 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:01:51,487 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:01:51,662 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:01:51,662 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:01:51,832 - api.v1.users.subadmin.service - INFO - Creating payment item for organization: Unical, department: Mathematics
+2025-01-17 13:01:51,832 - api.v1.users.subadmin.service - INFO - Creating payment item for organization: Unical, department: Mathematics
+2025-01-17 13:01:51,861 - api.v1.users.subadmin.service - INFO - 011
+2025-01-17 13:01:51,861 - api.v1.users.subadmin.service - INFO - 011
+2025-01-17 13:01:51,864 - api.v1.users.subadmin.service - INFO - Creating payment item for organization: Unical, department: Mathematics, level: 300, session: Academic Session 2024/2025
+2025-01-17 13:01:51,864 - api.v1.users.subadmin.service - INFO - Creating payment item for organization: Unical, department: Mathematics, level: 300, session: Academic Session 2024/2025
+2025-01-17 13:01:52,210 - api.v1.users.subadmin.service - INFO - session_instance: <Session(name='Academic Session 2024/2025', active='True')>
+2025-01-17 13:01:52,210 - api.v1.users.subadmin.service - INFO - session_instance: <Session(name='Academic Session 2024/2025', active='True')>
+2025-01-17 13:01:52,538 - api.v1.users.subadmin.service - INFO - finalized parsed_data: {'name': 'Departmental Dues', 'description': 'dept dues for maths 300 level', 'amount': Decimal('3000'), 'level': <Level(name='300')>, 'department': <Department(name='Mathematics')>, 'academic_session': <Session(name='Academic Session 2024/2025', active='True')>, 'bank_name': 'first bank of nigeria', 'account_number': '3112525638', 'percentage_charge': '0', 'organization': <Organization(name='University Of Calabar', email='edu@unical.com')>}
+2025-01-17 13:01:52,538 - api.v1.users.subadmin.service - INFO - finalized parsed_data: {'name': 'Departmental Dues', 'description': 'dept dues for maths 300 level', 'amount': Decimal('3000'), 'level': <Level(name='300')>, 'department': <Department(name='Mathematics')>, 'academic_session': <Session(name='Academic Session 2024/2025', active='True')>, 'bank_name': 'first bank of nigeria', 'account_number': '3112525638', 'percentage_charge': '0', 'organization': <Organization(name='University Of Calabar', email='edu@unical.com')>}
+2025-01-17 13:01:52,543 - api.v1.users.subadmin.service - INFO - account data: {'business_name': 'Mathematics - Departmental Dues', 'settlement_bank': '011', 'account_number': '3112525638', 'percentage_charge': '0'}
+2025-01-17 13:01:52,543 - api.v1.users.subadmin.service - INFO - account data: {'business_name': 'Mathematics - Departmental Dues', 'settlement_bank': '011', 'account_number': '3112525638', 'percentage_charge': '0'}
+2025-01-17 13:01:52,547 - api.v1.users.subadmin.service - INFO - sk_test_5549e0f982fe151fd1f2d76287d841a5ed9fd11a
+2025-01-17 13:01:52,547 - api.v1.users.subadmin.service - INFO - sk_test_5549e0f982fe151fd1f2d76287d841a5ed9fd11a
+2025-01-17 13:01:53,300 - api.v1.users.subadmin.service - INFO - Payment initialized: {'status': True, 'message': 'Subaccount created', 'data': {'business_name': 'Mathematics - Departmental Dues', 'account_number': '3112525638', 'percentage_charge': 0, 'settlement_bank': 'First Bank of Nigeria', 'currency': 'NGN', 'bank': 7, 'integration': 1358366, 'domain': 'test', 'account_name': 'ADEYEMI FAVOUR CHINWE', 'product': 'collection', 'managed_by_integration': 1358366, 'subaccount_code': 'ACCT_z767la7glnzo61s', 'is_verified': False, 'settlement_schedule': 'AUTO', 'active': True, 'migrate': False, 'id': 1230746, 'createdAt': '2025-01-17T12:02:01.023Z', 'updatedAt': '2025-01-17T12:02:01.023Z'}}
+2025-01-17 13:01:53,300 - api.v1.users.subadmin.service - INFO - Payment initialized: {'status': True, 'message': 'Subaccount created', 'data': {'business_name': 'Mathematics - Departmental Dues', 'account_number': '3112525638', 'percentage_charge': 0, 'settlement_bank': 'First Bank of Nigeria', 'currency': 'NGN', 'bank': 7, 'integration': 1358366, 'domain': 'test', 'account_name': 'ADEYEMI FAVOUR CHINWE', 'product': 'collection', 'managed_by_integration': 1358366, 'subaccount_code': 'ACCT_z767la7glnzo61s', 'is_verified': False, 'settlement_schedule': 'AUTO', 'active': True, 'migrate': False, 'id': 1230746, 'createdAt': '2025-01-17T12:02:01.023Z', 'updatedAt': '2025-01-17T12:02:01.023Z'}}
+2025-01-17 13:01:53,371 - api.v1.users.subadmin.service - INFO - payment_item: <PaymentItem(name='Departmental Dues', amount='3000')>
+2025-01-17 13:01:53,371 - api.v1.users.subadmin.service - INFO - payment_item: <PaymentItem(name='Departmental Dues', amount='3000')>
+2025-01-17 13:01:53,751 - api.v1.users.subadmin.service - INFO - Created payment item
+2025-01-17 13:01:53,751 - api.v1.users.subadmin.service - INFO - Created payment item
+2025-01-17 13:01:53,758 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:01:53] "[35m[1mPOST /api/admin/payment/create HTTP/1.1[0m" 201 -
+2025-01-17 13:01:53,758 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:01:53] "[35m[1mPOST /api/admin/payment/create HTTP/1.1[0m" 201 -
+2025-01-17 13:02:16,776 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:16] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:02:16,776 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:16] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:02:17,788 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:17] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:02:17,793 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:17] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:02:17,788 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:17] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:02:17,790 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:17,795 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:17] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:02:17,793 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:17] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:02:17,790 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:17,795 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:17] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:02:17,801 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:02:17,801 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:02:17,805 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:17,805 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,143 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:02:18,143 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:02:18,146 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:02:18,146 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:02:18,149 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,149 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,350 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:18,350 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:18,354 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:02:18,354 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:02:18,358 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,358 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,506 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:18,506 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:18,512 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:18,512 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:18,515 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:18,515 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:18,518 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:02:18,522 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:18,518 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:02:18,529 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:18,522 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:18,533 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,529 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:18,537 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:02:18,533 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,541 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:02:18,537 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:02:18,541 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:02:18,548 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,548 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,551 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,551 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,696 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:02:18,696 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:02:18,700 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:02:18,700 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:02:18,715 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:18,715 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:18,811 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,811 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,889 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:02:18,895 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:02:18,889 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:02:18,895 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:02:18,906 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:02:18,906 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:02:18,937 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:02:19,013 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:18,937 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:02:19,046 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:19,013 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:19,046 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:19,282 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,283 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:02:19,282 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,283 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:02:19,294 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:19,294 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:19,307 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:19,307 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:19,311 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:02:19,311 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:02:19,314 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:19,314 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:19,454 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,458 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:19] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:02:19,454 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,467 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:19,458 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:19] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:02:19,470 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,467 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:19,488 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,470 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,488 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,489 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:19,498 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:19,489 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:19,498 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:19,512 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:02:19,512 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:02:19,522 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:19,528 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:19,522 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:19,528 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:19,533 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:02:19,533 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:02:19,539 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:19,539 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:19,709 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,709 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,733 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,733 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:19,871 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:02:19,871 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:02:19,979 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:02:19,979 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:02:20,078 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:20] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:02:20,088 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:20] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:02:20,078 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:20] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:02:20,320 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:20,088 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:20] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:02:20,603 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:02:20,320 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:20,603 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:02:22,293 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:02:22,293 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:02:22,627 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:22,627 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:22,638 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:22] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:02:22,638 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:22] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:02:23,085 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:02:23,085 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:02:23,097 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:02:23,097 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:02:23,126 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:23,126 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:23,580 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:23,580 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:23,782 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:23,782 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:23,885 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:23,885 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:24,239 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:02:24,239 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:02:24,510 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:24,510 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:24,957 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:24,957 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:25,148 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:02:25,148 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:02:25,396 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:02:25,396 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:02:25,680 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:25] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:02:25,680 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:25] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:02:27,277 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:27] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:02:27,277 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:27] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:02:27,983 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:27,983 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:02:28,199 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:02:28,199 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:02:28,379 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:28,379 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:29,427 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:29,427 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:29,443 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:29,443 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:02:29,472 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:29,472 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:02:29,481 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:02:29,481 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:02:29,542 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:29,542 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:02:29,920 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:29,920 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:29,979 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:29,979 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:02:29,992 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:02:29,992 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:02:30,204 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:02:30,204 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:02:30,556 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:30] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:02:30,556 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:02:30] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:03:00,842 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:03:00] "OPTIONS /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:03:00,842 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:03:00] "OPTIONS /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:03:01,415 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:03:01,415 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:03:01,422 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:03:01,422 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:03:01,428 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:03:01,428 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:03:01,950 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:03:01,950 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:03:01,954 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:03:01,954 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:03:01,958 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:03:01,958 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:03:01,962 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:03:01,962 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:03:01,965 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:03:01,965 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:03:02,139 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:03:02,139 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:03:02,142 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:03:02,142 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:03:02,149 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:03:02,149 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:03:03,057 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:03:03,057 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:03:03,064 - api.v1.users.subadmin.routes - INFO - Payments: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:03:03,064 - api.v1.users.subadmin.routes - INFO - Payments: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:03:03,259 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:03:03] "GET /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:03:03,259 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:03:03] "GET /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:09:41,515 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:41] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:09:41,515 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:41] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:09:42,454 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:42] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:09:42,454 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:42] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:09:42,479 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:42] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:09:42,479 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:42] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:09:42,622 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:42] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:09:42,622 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:42] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:09:42,979 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:42,979 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:42,985 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:09:42,985 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:09:42,991 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:42,991 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,199 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:43,199 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:43,202 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:09:43,202 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:09:43,204 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,204 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,300 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:43,300 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:43,303 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:09:43,303 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:09:43,306 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,306 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,382 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:09:43,382 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:09:43,385 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:09:43,385 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:09:43,388 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,388 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,541 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:09:43,541 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:09:43,544 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:09:43,544 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:09:43,547 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,547 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,646 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:09:43,646 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:09:43,649 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:09:43,649 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:09:43,655 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,655 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,747 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:43,747 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:43,751 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:43,751 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:43,754 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:43,754 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:43,757 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:09:43,757 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:09:43,759 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,759 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,892 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:43,892 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:43,895 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:43,895 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:43,897 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:43,897 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:43,900 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:09:43,900 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:09:43,903 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,903 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:43,941 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:43,941 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:44,033 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:44,033 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:44,036 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:44,036 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:44,039 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:44,039 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:44,041 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:09:44,041 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:09:44,043 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:44,043 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:44,087 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:44,087 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:44,109 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:44,109 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:44,111 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:09:44,111 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:09:44,114 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:44,114 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:44,122 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:09:44,122 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:09:44,238 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:44,238 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:44,301 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:09:44,301 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:09:44,433 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:09:44,433 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:09:44,493 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:09:44,493 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:09:44,496 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:09:44,496 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:09:44,499 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:44,499 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:44,528 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:44] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:09:44,528 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:44] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:09:44,636 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:44] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:09:44,637 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:09:44,636 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:44] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:09:44,637 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:09:44,805 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:44] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:09:44,805 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:44] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:09:44,855 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:44,855 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:44,858 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:44,858 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:44,860 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:44,860 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:44,862 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:09:44,862 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:09:44,866 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:44,866 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:45,051 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:45,051 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:45,435 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:45] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:09:45,435 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:45] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:09:51,207 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:51] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:09:51,207 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:51] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:09:51,766 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:51,766 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:51,781 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:09:51,781 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:09:51,787 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:51,787 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:52,163 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:09:52,163 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:09:52,171 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:09:52,171 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:09:52,176 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:52,176 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:52,526 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:52,526 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:52,533 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:52,533 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:52,544 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:52,544 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:52,548 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:09:52,548 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:09:52,553 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:52,553 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:52,739 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:52,739 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:52,911 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:09:52,911 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:09:53,099 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:09:53,099 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:09:53,287 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:53] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:09:53,287 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:53] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:09:54,277 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:54] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:09:54,277 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:54] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:09:54,866 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:54,866 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:09:54,871 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:09:54,871 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:09:54,878 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:54,878 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:55,383 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:55,383 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:55,391 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:55,391 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:09:55,396 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:55,396 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:09:55,401 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:09:55,401 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:09:55,405 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:55,405 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:09:55,582 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:55,582 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:55,586 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:55,586 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:09:55,588 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:09:55,588 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:09:55,808 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:09:55,808 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:09:56,170 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:56] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:09:56,170 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:09:56] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:10:36,348 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:10:36] "OPTIONS /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:10:36,348 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:10:36] "OPTIONS /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:10:36,952 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:10:36,952 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:10:36,956 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:10:36,956 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:10:36,960 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:10:36,960 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:10:37,482 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:10:37,482 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:10:37,487 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:10:37,487 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:10:37,490 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:10:37,490 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:10:37,494 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:10:37,494 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:10:37,498 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:10:37,498 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:10:37,674 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:10:37,674 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:10:37,677 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:10:37,677 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:10:37,680 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:10:37,680 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:10:38,562 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:10:38,562 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:10:38,566 - api.v1.users.subadmin.routes - INFO - Payments: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:10:38,566 - api.v1.users.subadmin.routes - INFO - Payments: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:10:38,771 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:10:38] "GET /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:10:38,771 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:10:38] "GET /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:11:00,254 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:00] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:00,256 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:00] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:00,254 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:00] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:00,256 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:00] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:00,454 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:00] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:00,457 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:00] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:00,454 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:00] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:00,457 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:00] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:00,982 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:00,982 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:00,989 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:00,989 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:01,002 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,002 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,156 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:01,156 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:01,158 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:01,158 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:01,161 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,161 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,327 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:01,327 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:01,330 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:01,330 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:01,333 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,333 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,356 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:01,356 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:01,360 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:01,360 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:01,362 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,362 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,518 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:01,518 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:01,526 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:01,526 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:01,549 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:01,549 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:01,550 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:11:01,556 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,550 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:11:01,556 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,561 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,561 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,693 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:01,693 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:01,693 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:01,693 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:01,697 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:01,698 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:01,697 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:01,698 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:01,701 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,703 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:01,701 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,703 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:01,711 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:01,711 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:01,715 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,715 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:01,882 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:01,882 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:01,989 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:01,989 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:01,991 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:01,998 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:01,991 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:01,998 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:02,003 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:02,005 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:02,003 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:02,012 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:02,005 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:02,012 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:02,021 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:02,021 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:02,028 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:02,028 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:02,056 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:02,056 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:02,061 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:02,061 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:02,064 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:02,064 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:02,067 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:02,067 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:02,072 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:02,072 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:02,219 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:02,221 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:02,219 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:02,221 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:02,237 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:02,237 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:02,360 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:02,360 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:02,364 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:02,364 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:02,367 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:02,367 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:02,370 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:11:02,370 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:11:02,374 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:02,374 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:02,392 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:02] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:02,392 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:02] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:02,437 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:02,437 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:02,552 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:02,552 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:02,625 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:02,625 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:02,630 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:02,630 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:02,800 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:02] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:02,800 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:02] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:02,806 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:02] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:02,806 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:02] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:02,895 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:02] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:02,895 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:02] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:03,224 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:03,224 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:03,231 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:03,231 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:03,240 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:03,240 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:03,581 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:03,581 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:03,584 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:03,584 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:03,588 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:03,588 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:03,933 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:03,933 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:03,936 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:03,936 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:03,939 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:03,939 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:03,942 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:03,942 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:03,944 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:03,944 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:04,133 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:04,133 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:04,304 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:04,304 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:04,482 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:04,482 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:04,663 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:04] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:04,663 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:04] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:05,433 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:05] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:11:05,433 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:05] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:11:06,032 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:06,032 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:06,035 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:11:06,035 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:11:06,040 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:06,040 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:06,573 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:06,573 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:06,594 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:06,594 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:06,597 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:06,597 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:06,600 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:11:06,600 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:11:06,605 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:06,605 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:06,786 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:06,786 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:06,792 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:06,792 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:06,798 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:11:06,798 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:11:06,986 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:11:06,986 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:11:07,352 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:07] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:11:07,352 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:07] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:11:19,298 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:19] "OPTIONS /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:11:19,298 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:19] "OPTIONS /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:11:19,872 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:19,872 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:19,876 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:11:19,876 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:11:19,878 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:19,878 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:20,443 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:20,443 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:20,449 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:20,449 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:20,456 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:20,456 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:20,464 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:11:20,464 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:11:20,470 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:20,470 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:20,655 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:20,655 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:20,658 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:20,658 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:20,662 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:11:20,662 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:11:21,561 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:21,561 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:21,565 - api.v1.users.subadmin.routes - INFO - Payments: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:21,565 - api.v1.users.subadmin.routes - INFO - Payments: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:21,756 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:21] "GET /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:11:21,756 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:21] "GET /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:11:40,181 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:40] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:40,187 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:40] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:40,181 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:40] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:40,187 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:40] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:40,348 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:40] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:40,348 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:40] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:40,869 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:40,869 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:40,876 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:40,876 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:40,882 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:40,882 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,046 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:41,046 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:41,060 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:41,060 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:41,064 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,064 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,200 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:41,200 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:41,207 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:11:41,207 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:11:41,210 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,210 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,240 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:41,240 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:41,243 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:41,243 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:41,247 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,247 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,424 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:41,424 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:41,428 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:41,428 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:41,432 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,432 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,571 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:41,571 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:41,577 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:41,577 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:41,583 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,583 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,614 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:41,614 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:41,627 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:41,627 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:41,634 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:41,634 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:41,639 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:41,639 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:41,642 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,642 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,805 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:41,805 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:41,810 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:41,810 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:41,813 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:41,813 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:41,816 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:41,816 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:41,825 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,831 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:41,825 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,831 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:41,979 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:41,979 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:41,982 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:41,982 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:41,985 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:41,985 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:41,989 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:11:41,989 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:11:41,992 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:41,992 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:42,019 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:42,019 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:42,188 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:42,189 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:42,191 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:42,188 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:42,189 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:42,191 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:42,461 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:42] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:42,464 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:42,461 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:42] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:42,464 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:42,645 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:42] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:42,645 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:42] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:42,656 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:42] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:42,656 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:42] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:43,424 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:43] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:43,424 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:43] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:44,539 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:44] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:44,539 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:44] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:44,568 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:44] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:44,568 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:44] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:45,223 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:45,223 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:45,229 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:45,229 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:45,234 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,234 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,255 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:45,255 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:45,261 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:45,261 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:45,266 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,266 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,384 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:45,384 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:45,388 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:11:45,388 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:11:45,392 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,392 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,647 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:45,647 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:45,650 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:45,650 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:45,654 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:45,654 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:45,654 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,654 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,659 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:45,659 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:45,665 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,665 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,800 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:45,800 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:45,803 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:45,803 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:45,806 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:45,806 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:46,043 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,043 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,047 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:46,047 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:46,049 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:46,050 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,049 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:46,050 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,053 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:46,053 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:46,056 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:46,056 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:46,059 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:46,061 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:46,059 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:46,061 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:46,066 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:46,066 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:11:46,069 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:46,069 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:46,177 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,177 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,181 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:46,181 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:46,185 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:46,185 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:46,189 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:11:46,189 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:11:46,193 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:46,193 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:46,258 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,262 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,258 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,262 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,373 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,373 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:46,451 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:46,451 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:11:46,604 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:46,604 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:46,635 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:46,635 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:11:46,729 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:46] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:46,729 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:46] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:11:46,758 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:46] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:46,758 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:46] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:46,805 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:46] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:46,805 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:46] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:11:47,326 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:47,326 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:11:47,330 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:47,330 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:11:47,334 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:47,334 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:47,690 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:47,690 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:11:47,696 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:47,696 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:11:47,701 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:47,701 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:48,057 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:48,057 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:48,061 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:48,061 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:11:48,065 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:48,065 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:11:48,068 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:48,068 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:11:48,072 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:48,072 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:11:48,256 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:48,256 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:11:48,611 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:48,611 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:11:48,789 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:48] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:11:48,789 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:11:48] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:12:02,013 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:02] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:12:02,013 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:02] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:12:02,733 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:12:02,733 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:12:02,738 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:12:02,738 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:12:02,745 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:02,745 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:03,098 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:12:03,098 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:12:03,101 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:12:03,101 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:12:03,105 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:03,105 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:03,437 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:03,437 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:03,442 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:12:03,442 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:12:03,446 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:12:03,446 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:12:03,449 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:12:03,449 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:12:03,453 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:03,453 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:03,639 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:03,639 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:03,816 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:12:03,816 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:12:04,021 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:12:04,021 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:12:04,189 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:04] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:12:04,189 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:04] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:12:05,092 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:05] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:12:05,092 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:05] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:12:06,843 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:12:06,843 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:12:06,848 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:12:06,848 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:12:06,852 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:06,852 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:07,395 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:07,395 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:07,399 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:12:07,399 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:12:07,403 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:12:07,403 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:12:07,407 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:12:07,407 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:12:07,412 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:07,412 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:07,589 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:07,589 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:07,593 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:07,593 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:07,600 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:12:07,600 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:12:07,776 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:12:07,776 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:12:08,119 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:08] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:12:08,119 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:08] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:12:18,561 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:18] "OPTIONS /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:12:18,561 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:18] "OPTIONS /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:12:19,817 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:12:19,817 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:12:19,825 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:12:19,825 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:12:19,832 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:19,832 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:20,404 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:20,404 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:20,407 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:12:20,407 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:12:20,411 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:12:20,411 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:12:20,414 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:12:20,414 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:12:20,416 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:20,416 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:12:20,592 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:20,592 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:20,596 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:20,596 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:12:20,600 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:12:20,600 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:12:21,494 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:12:21,494 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:12:21,500 - api.v1.users.subadmin.routes - INFO - Payments: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:12:21,500 - api.v1.users.subadmin.routes - INFO - Payments: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:12:21,697 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:21] "GET /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:12:21,697 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:12:21] "GET /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:13:22,817 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:22] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:22,817 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:22] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:22,876 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:22] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:22,876 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:22] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:22,983 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:22] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:13:22,983 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:22] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:13:23,551 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:23,551 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:23,555 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:23,555 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:23,558 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:23,558 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:23,884 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:23,884 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:23,886 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:23,886 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:23,889 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:23,889 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:24,159 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:24] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:24,159 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:24] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:24,156 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:24,156 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:24,165 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:13:24,165 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:13:24,168 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:24,168 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:24,245 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:24,245 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:24,248 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:24,248 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:24,250 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:24,250 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:24,253 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:24,253 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:24,255 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:24,255 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:24,430 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:24,430 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:24,492 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:24,492 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:24,496 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:24,496 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:24,499 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:24,499 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:24,658 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:24,658 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:24,662 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:24,662 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:24,668 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:24,668 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:24,908 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:24,908 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:24,939 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:24,939 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:24,943 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:24,943 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:24,947 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:24,947 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:25,031 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:25,031 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:25,035 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:25,035 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:25,037 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:25,037 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:25,041 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:13:25,041 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:13:25,044 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:25,044 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:25,189 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:25] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:25,189 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:25] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:25,215 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:25,215 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:25,215 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:25,215 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:25,219 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:25,219 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:25,227 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:25,227 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:25,554 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:25,554 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:25,587 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:25,587 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:25,591 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:25,591 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:25,712 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:25] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:13:25,712 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:25] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:13:25,713 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:25,713 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:25,832 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:25,832 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:25,835 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:25,835 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:25,838 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:25,838 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:25,868 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:25,868 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:26,343 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:26,343 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:26,370 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:26,370 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:26,374 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:26,374 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:26,377 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:26,377 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:26,379 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:26,379 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:26,382 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:26,382 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:26,515 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:26,516 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:26,515 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:26,516 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:26,519 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:26,519 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:26,523 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:26,523 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:26,606 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:26,606 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:26,727 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:26,727 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:26,891 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:26] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:26,890 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:26,891 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:26] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:26,890 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:26,895 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:26,895 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:26,898 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:26,898 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:26,945 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:26,945 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:27,132 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:27] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:27,132 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:27] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:27,482 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:27,482 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:27,486 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:27,486 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:27,492 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:27,492 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:27,495 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:27,495 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:27,497 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:27,497 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:27,670 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:27,670 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:27,839 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:27,839 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:28,027 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:28,027 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:28,199 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:28] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:28,199 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:28] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:31,257 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:31] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:31,257 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:31] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:31,316 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:31] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:31,316 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:31] "OPTIONS /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:31,432 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:31] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:31,432 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:31] "OPTIONS /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:31,447 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:31] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:13:31,447 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:31] "OPTIONS /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:13:32,133 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:32,137 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:32,145 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:32,133 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:32,153 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:32,137 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:32,145 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:32,155 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:32,153 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:32,158 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:32,155 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:32,162 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,158 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:32,165 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,162 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,168 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,165 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,168 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,272 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:32,272 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:32,278 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:13:32,278 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN', 'BURSAR', 'SUBADMIN', 'STUDENT']
+2025-01-17 13:13:32,281 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,281 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,511 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:32,511 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:32,512 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:32,515 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:32,512 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:32,515 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:32,517 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:32,518 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,517 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:32,518 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,520 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,520 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,525 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:32,525 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:32,529 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:32,529 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:32,532 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,532 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,651 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:32,651 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:32,654 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:32,654 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:32,657 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,657 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,850 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:32,850 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:32,850 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:32,850 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:32,853 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:32,854 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:32,853 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:32,854 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:32,857 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:32,858 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:32,857 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:32,858 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:32,861 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:32,861 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:32,861 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:32,861 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:32,864 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,864 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,865 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,865 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,874 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:32,874 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:32,877 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:32,877 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:32,880 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:32,880 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:32,883 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:32,883 - api.v1.users.admins.service - INFO - Starting fetch all departments process
+2025-01-17 13:13:32,886 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:32,886 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:33,011 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:33,011 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:33,015 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:33,015 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:33,017 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:33,017 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:33,019 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:13:33,019 - api.v1.reciepts.routes - INFO - Fetching payment analytics for dates None - None
+2025-01-17 13:13:33,023 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:33,023 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:33,040 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:33,040 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:33,049 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:33,049 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:33,062 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:33,062 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:33,212 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:33,217 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:33,212 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:33,217 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:33,396 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:33,396 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:33,427 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:33,427 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:33,442 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:33,442 - api.v1.users.admins.service - INFO - Fetched departments: [{'id': 2, 'name': 'physics', 'utility': False, 'organization': 'University Of Calabar'}, {'id': 3, 'name': 'Library', 'utility': True, 'organization': 'University Of Calabar'}, {'id': 6, 'name': 'Mathematics', 'utility': False, 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:33,591 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:33] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:33,591 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:33] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:33,675 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:33] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:13:33,675 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:33] "GET /api/analytics/payments HTTP/1.1" 200 -
+2025-01-17 13:13:33,699 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:33] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:33,699 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:33] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:33,716 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:33] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:33,716 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:33] "GET /api/admin/department/all HTTP/1.1" 200 -
+2025-01-17 13:13:35,746 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:35,746 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:35,752 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:35,752 - api.v1.auth.service - INFO - Normalized required roles: ['SUPERADMIN', 'ADMIN']
+2025-01-17 13:13:35,759 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:35,759 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:36,131 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:36,131 - api.v1.auth.service - INFO - User found: None
+2025-01-17 13:13:36,137 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:36,137 - api.v1.auth.service - ERROR - User not found
+2025-01-17 13:13:36,143 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:36,143 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:36,519 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:36,519 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:36,523 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:36,523 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:36,525 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:36,525 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:36,528 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:36,528 - api.v1.users.admins.service - INFO - Starting fetch all subadmins process
+2025-01-17 13:13:36,531 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:36,531 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:36,715 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:36,715 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:36,889 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:36,889 - api.v1.users.admins.service - INFO - Fetching all subadmins for organization: Unical
+2025-01-17 13:13:37,075 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:37,075 - api.v1.users.admins.service - INFO - Fetched subadmins: []
+2025-01-17 13:13:37,248 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:37] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:37,248 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:37] "GET /api/admin/subadmin/all HTTP/1.1" 200 -
+2025-01-17 13:13:39,157 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:39] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:13:39,157 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:39] "OPTIONS /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:13:40,234 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:40,234 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:40,238 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:13:40,238 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:13:40,241 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:40,241 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:40,790 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:40,790 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:40,793 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:40,793 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:40,797 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:40,797 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:40,800 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:13:40,800 - api.v1.users.subadmin.service - INFO - Starting fetch all students process
+2025-01-17 13:13:40,803 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:40,803 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:40,988 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:40,988 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:40,991 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:40,991 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:40,994 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:13:40,994 - api.v1.users.subadmin.service - INFO - Fetching all students in the database (admin view)
+2025-01-17 13:13:41,176 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:13:41,176 - api.v1.users.subadmin.service - INFO - Fetched students: []
+2025-01-17 13:13:41,549 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:41] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:13:41,549 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:41] "GET /api/admin/student/all HTTP/1.1" 200 -
+2025-01-17 13:13:54,262 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:54] "OPTIONS /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:13:54,262 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:54] "OPTIONS /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:13:54,807 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:54,807 - api.v1.auth.service - INFO - Checking role permission for user
+2025-01-17 13:13:54,811 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:13:54,811 - api.v1.auth.service - INFO - Normalized required roles: ['ADMIN', 'SUBADMIN']
+2025-01-17 13:13:54,815 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:54,815 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:55,380 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:55,380 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:55,386 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:55,386 - api.v1.auth.service - INFO - Parsed user role: ADMIN
+2025-01-17 13:13:55,389 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:55,389 - api.v1.auth.service - INFO - Permission granted for role: ADMIN
+2025-01-17 13:13:55,393 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:13:55,393 - api.v1.users.subadmin.service - INFO - Starting fetch all payment items process
+2025-01-17 13:13:55,396 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:55,396 - api.v1.auth.service - INFO - a5f8a315-4058-4650-9687-b10871bf667d
+2025-01-17 13:13:55,594 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:55,594 - api.v1.auth.service - INFO - User found: <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:55,597 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:55,597 - api.v1.users.subadmin.service - INFO - <User(name='Ojogu Nkang', role='<Role(name='RoleEnum.ADMIN')>')>
+2025-01-17 13:13:55,599 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:13:55,599 - api.v1.users.subadmin.service - INFO - Fetching all payment items in the database (admin view)
+2025-01-17 13:13:56,737 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:56,737 - api.v1.users.subadmin.service - INFO - Fetched payment items: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:56,740 - api.v1.users.subadmin.routes - INFO - Payments: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:56,740 - api.v1.users.subadmin.routes - INFO - Payments: [{'id': 2, 'name': 'Departmental Dues', 'amount': Decimal('3000.00'), 'academic_session': 'Academic Session 2024/2025', 'level': '300', 'department': 'Mathematics', 'organization': 'University Of Calabar'}]
+2025-01-17 13:13:56,914 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:56] "GET /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:13:56,914 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 13:13:56] "GET /api/admin/payment/all HTTP/1.1" 200 -
+2025-01-17 13:44:23,154 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUSER\\Desktop\\prevz\\project\\payment_gateway\\src\\api\\v1\\users\\subadmin\\service.py', reloading
+2025-01-17 13:44:23,154 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUSER\\Desktop\\prevz\\project\\payment_gateway\\src\\api\\v1\\users\\subadmin\\service.py', reloading
+2025-01-17 13:44:25,283 - werkzeug - INFO -  * Restarting with stat
+2025-01-17 13:44:25,283 - werkzeug - INFO -  * Restarting with stat
+2025-01-17 13:44:34,624 - root - INFO - Application started
+2025-01-17 13:44:34,624 - root - INFO - Application started
+2025-01-17 13:44:34,788 - flask_cors - INFO - debugging cors
+2025-01-17 13:44:34,788 - flask_cors - INFO - debugging cors
+2025-01-17 13:44:34,788 - flask_cors - INFO - debugging cors
+2025-01-17 13:44:34,788 - flask_cors - INFO - debugging cors
+2025-01-17 13:44:39,375 - werkzeug - WARNING -  * Debugger is active!
+2025-01-17 13:44:39,375 - werkzeug - WARNING -  * Debugger is active!
+2025-01-17 13:44:40,570 - werkzeug - INFO -  * Debugger PIN: 621-567-442
+2025-01-17 13:44:40,570 - werkzeug - INFO -  * Debugger PIN: 621-567-442
+2025-01-17 13:44:58,217 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUSER\\Desktop\\prevz\\project\\payment_gateway\\src\\api\\v1\\users\\students\\service.py', reloading
+2025-01-17 13:44:58,217 - werkzeug - INFO -  * Detected change in 'C:\\Users\\UUSER\\Desktop\\prevz\\project\\payment_gateway\\src\\api\\v1\\users\\students\\service.py', reloading
+2025-01-17 13:45:04,871 - werkzeug - INFO -  * Restarting with stat
+2025-01-17 13:45:04,871 - werkzeug - INFO -  * Restarting with stat

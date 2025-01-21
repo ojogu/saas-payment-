@@ -1,0 +1,6 @@
+# Ignore .env file
+.env
+
+# Ignore Windows virtual environment directory
+win/
+

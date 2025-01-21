@@ -1,0 +1,1 @@
+there is a change in requirement, i want both admin and subadmin to fetch the users, if subadmin var is none, fetch all the students in the database, with their department name, if the subadmin is found from the current user, fetch just the students in the subadmin department
