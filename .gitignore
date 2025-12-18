@@ -10,3 +10,6 @@ wheels/
 .venv
 .env
 src/logs
+
+school-system_1.db
+school-system.db
