@@ -1,14 +1,15 @@
 from datetime import datetime
 from typing import List, Optional
 
-from sqlalchemy import DateTime, ForeignKey, Integer, String
+from sqlalchemy import DateTime, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from src.base.model import BaseModel
+
 
 class Clearance(BaseModel):
     __tablename__ = "clearances"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     student_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
     clearance_item_id: Mapped[int] = mapped_column(
         ForeignKey("clearance_items.id"), nullable=False
@@ -32,7 +33,6 @@ class Clearance(BaseModel):
 class ClearanceLogs(BaseModel):
     __tablename__ = "clearance_logs"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     action: Mapped[str] = mapped_column(String(255), nullable=False)
     email: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
     matric: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)

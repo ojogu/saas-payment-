@@ -1,5 +1,5 @@
 from flask import Flask
-from src.routes.auth_routes import auth_bp
+from auth.routes import auth_bp
 from src.routes.organization_routes import organization_routes
 from src.routes.department_routes import department_routes
 from src.routes.user_routes import user_routes
@@ -18,7 +18,7 @@ from src.utils.db import create_tables, drop_tables, init_db, close_db
 from flask_cors import CORS
 from src.utils.config import config, app_config
 from src.utils.exception import register_error_handlers
-
+from src.utils.dependencies import jwt
 
 def create_app():
     app=Flask(__name__)
@@ -31,6 +31,8 @@ def create_app():
     
     #error handling
     register_error_handlers(app)
+    
+    jwt.init_app(app)
     
     # Load configuration from Pydantic Settings
     app_config(app)

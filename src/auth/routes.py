@@ -1,9 +1,10 @@
+from flask_jwt_extended import create_access_token
 import jwt
 from flask import Blueprint, jsonify, request
 from werkzeug.security import generate_password_hash
-
-from src.model import Department, Organization, PassPorts, Session, User, db
-
+from src.auth.schema import Login
+from src.service.user_service import UserService
+from src.utils.db import db
 auth_bp = Blueprint("auth", __name__)
 
 
@@ -45,10 +46,26 @@ def generated_padded_token(token):
 
 @auth_bp.route("/login", methods=["POST"])
 def login():
-    data = request.get_json()
-    credential = data.get("credential")
-    password = data.get("password")
-    user = User.query.filter_by(email=credential).first()
+    data:dict = request.get_json()
+    validated_data = Login(**data)
+    # credential = data.get("credential")
+    # password = data.get("password")
+    
+    #move to service class 
+    user_service = UserService(db)
+    
+    jwt_payload:dict = user_service.authenticate_user(validated_data)
+    access_token = create_access_token(
+        identity=jwt_payload.get("user_id"),
+        additional_claims=jwt_payload.get("role")
+        
+        )
+    stmt = db.execute(
+            select(User).where(
+                User.email == credential
+            )
+    )
+    user = stmt.scalar_or_first()
     if not user:
         user = User.query.filter_by(matric_number=credential).first()
         if not user:

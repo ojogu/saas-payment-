@@ -16,6 +16,7 @@ class Config(BaseSettings):
     SECRET_KEY: str
     CLOUDINARY_SECRET_KEY: str
     JWT_SECRET_KEY: str
+    super_admin_password:str
     
     # Payment Configuration
     PAYSTACK_LIVE_KEY: str

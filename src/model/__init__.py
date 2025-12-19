@@ -4,7 +4,7 @@ from .file import Files, PassPorts
 from .notification import Notification_Setting, Use_Notification
 from .organization import Organization, Faculty, Department, DepartmentCode
 from .payment import Accounts, AccountPoints, Payment, PassivePayment
-from .session import Session
+from .session import SchoolSession
 from .user import User
 from src.utils.db import db
 __all__ = [
@@ -30,6 +30,6 @@ __all__ = [
     'AccountPoints',
     'Payment',
     'PassivePayment',
-    'Session',
+    'SchoolSession',
     'User'
 ]

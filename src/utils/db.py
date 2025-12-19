@@ -29,7 +29,7 @@ def _get_db():
     return g.db
 
 
-db: Session = LocalProxy(_get_db)
+db:Session = LocalProxy(_get_db)
 
 
 def init_db(app: Flask):
@@ -42,7 +42,7 @@ def close_db(app: Flask):
     @app.teardown_appcontext
     def shutdown_session(exception=None):
         """Closes the session after the request is finished."""
-        db: Session = g.pop("db", None)
+        db:Session = g.pop("db", None)
         if db is not None:
             try:
                 if exception:

@@ -1,13 +1,14 @@
 from typing import List, Optional
 
-from sqlalchemy import ForeignKey, Integer, String
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from src.base.model import BaseModel
+
 
 class Organization(BaseModel):
     __tablename__ = "organizations"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(120), nullable=False, unique=True)
     phone: Mapped[Optional[str]] = mapped_column(
         String(120), nullable=True, unique=True
@@ -56,7 +57,6 @@ class Organization(BaseModel):
 class Faculty(BaseModel):
     __tablename__ = "faculties"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(120), nullable=False)
     organization_id: Mapped[int] = mapped_column(
         ForeignKey("organizations.id"), nullable=False
@@ -75,7 +75,6 @@ class Faculty(BaseModel):
 class Department(BaseModel):
     __tablename__ = "departments"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(120), nullable=False)
     organization_id: Mapped[int] = mapped_column(
         ForeignKey("organizations.id"), nullable=False
@@ -99,7 +98,6 @@ class Department(BaseModel):
 class DepartmentCode(BaseModel):
     __tablename__ = "department_code"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     code: Mapped[str] = mapped_column(String(10), nullable=False)
     organization_id: Mapped[int] = mapped_column(
         ForeignKey("organizations.id"), nullable=False

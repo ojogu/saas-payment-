@@ -1,13 +1,14 @@
 from typing import Optional
 
-from sqlalchemy import ForeignKey, Integer, String
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from src.base.model import BaseModel
+
 
 class Files(BaseModel):
     __tablename__ = "files"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     clearance_id: Mapped[Optional[int]] = mapped_column(
         ForeignKey("clearances.id"), nullable=True
     )
@@ -23,7 +24,6 @@ class Files(BaseModel):
 class PassPorts(BaseModel):
     __tablename__ = "passports"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     student_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
     file_url: Mapped[Optional[str]] = mapped_column(
         String(250), nullable=True, unique=False
