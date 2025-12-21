@@ -49,7 +49,7 @@ class Organization(BaseModel):
     accounts: Mapped[List["Accounts"]] = relationship(  # noqa: F821 # type: ignore
         back_populates="organization", lazy=True, cascade="all, delete-orphan"
     )
-    sessions: Mapped[List["Session"]] = relationship(  # noqa: F821 # type: ignore
+    school_sessions: Mapped[List["SchoolSession"]] = relationship(  # noqa: F821 # type: ignore
         back_populates="organization", lazy=True, cascade="all, delete-orphan"
     )
 

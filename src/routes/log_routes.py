@@ -4,7 +4,8 @@ import jwt
 from flask import Blueprint, jsonify, request
 from sqlalchemy import func
 
-from src.model import ClearanceLogs, Organization, db
+from src.model import ClearanceLogs, Organization
+from src.utils.db import db
 
 clearance_log = Blueprint("clearance_log", __name__)
 

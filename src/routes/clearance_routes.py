@@ -8,7 +8,7 @@ from flask import Blueprint, current_app, jsonify, redirect, request
 from sqlalchemy import func, or_
 
 from src.model import *
-
+from src.utils.db import db
 
 def generate_payment_reference(prefix="ref", length=10):
     random_part = "".join(

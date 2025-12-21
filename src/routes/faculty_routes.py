@@ -8,8 +8,8 @@ from src.model import (
     Faculty,
     Organization,
     User,
-    db,
 )
+from src.utils.db import db
 
 faculty_routes = Blueprint("faculty", __name__)
 

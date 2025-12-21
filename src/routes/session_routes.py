@@ -1,7 +1,8 @@
 import jwt
 from flask import Blueprint, jsonify, request
 
-from src.model import Organization, Session, User, db
+from src.model import Organization, SchoolSession, User
+from src.utils.db import db
 
 session_route = Blueprint("session", __name__)
 
@@ -27,13 +28,13 @@ def create_session():
     end_year = data.get("end_year")
     is_active = data.get("is_active")
     current = data.get("old_session")
-    existing_session = Session.query.filter_by(
+    existing_session = SchoolSession.query.filter_by(
         start_year=start_year, organization_id=organization.id
     ).first()
-    existing_session_name = Session.query.filter_by(
+    existing_session_name = SchoolSession.query.filter_by(
         name=name, organization_id=organization.id
     ).first()
-    existing_session_end = Session.query.filter_by(
+    existing_session_end = SchoolSession.query.filter_by(
         end_year=end_year, organization_id=organization.id
     ).first()
     if existing_session or existing_session_name or existing_session_end:
@@ -41,7 +42,7 @@ def create_session():
     if (int(end_year) - int(start_year)) > 1 or (int(end_year) - int(start_year)) < 1:
         return jsonify({"message": "Invalid year must be 1 year apart"})
     if is_active == True:
-        current_session = Session.query.get(current)
+        current_session = SchoolSession.query.get(current)
         if current_session:
             current_session.is_active = False
             students = User.query.filter_by(
@@ -52,7 +53,7 @@ def create_session():
                     level = int(student.level)
                     level += 100
                     student.level = level
-    new_session = Session(
+    new_session = SchoolSession(
         name=name,
         start_year=start_year,
         end_year=end_year,
@@ -62,7 +63,7 @@ def create_session():
     db.session.add(new_session)
     db.session.commit()
 
-    return jsonify({"message": "Session Created Successfully"})
+    return jsonify({"message": "SchoolSession Created Successfully"})
 
 
 @session_route.route("/session/update", methods=["PUT"])
@@ -83,13 +84,13 @@ def update_session():
     start_year = data.get("start_year")
     end_year = data.get("end_year")
     is_active = data.get("is_active")
-    current = Session.query.filter_by(
+    current = SchoolSession.query.filter_by(
         is_active=True, organization_id=user.get("organization_id")
     ).first()
-    session = Session.query.get(id)
-    existing_session = Session.query.filter_by(start_year=start_year).first()
-    existing_session_name = Session.query.filter_by(name=name).first()
-    existing_session_end = Session.query.filter_by(end_year=end_year).first()
+    session = SchoolSession.query.get(id)
+    existing_session = SchoolSession.query.filter_by(start_year=start_year).first()
+    existing_session_name = SchoolSession.query.filter_by(name=name).first()
+    existing_session_end = SchoolSession.query.filter_by(end_year=end_year).first()
     check = session.query.filter_by(
         start_year=start_year, end_year=end_year, name=name
     ).first()
@@ -106,7 +107,7 @@ def update_session():
     session.is_active = is_active
     db.session.commit()
 
-    return jsonify({"message": "Session Updated Successfully"})
+    return jsonify({"message": "SchoolSession Updated Successfully"})
 
 
 @session_route.route("/session/create/open", methods=["POST"])
@@ -118,11 +119,11 @@ def create_open_session():
     #     level=int(student.level)
     #     level+=100
     #     student.level=level
-    new_session = Session(name=name)
+    new_session = SchoolSession(name=name)
     db.session.add(new_session)
     db.session.commit()
 
-    return jsonify({"message": "Session Created Successfully"})
+    return jsonify({"message": "SchoolSession Created Successfully"})
 
 
 @session_route.route("/session/all", methods=["GET"])
@@ -137,7 +138,7 @@ def get_sessions():
         return jsonify({"message": "Invalid auth token"})
     if user.get("role") not in ["ADMIN", "BURSAR", "SUBADMIN", "AUDIT"]:
         return jsonify({"message": "Unauthorized Access"}), 401
-    sessions = Session.query.filter_by(
+    sessions = SchoolSession.query.filter_by(
         organization_id=user.get("organization_id")
     ).all()
     data = []
@@ -166,7 +167,7 @@ def get_session(id):
         return jsonify({"message": "Invalid auth token"})
     if user.get("role") not in ["ADMIN", "DATA"]:
         return jsonify({"message": "Unauthorized Access"}), 401
-    session = Session.query.get(id)
+    session = SchoolSession.query.get(id)
     data = []
     if session:
         sess_data = {
@@ -188,14 +189,14 @@ def get_session(id):
 
 @session_route.route("/session/delete", methods=["POST"])
 def delete_sessions():
-    sessions = Session.query.all()
+    sessions = SchoolSession.query.all()
     for session in sessions:
         if not session:
-            return jsonify({"message": "Session not found"}), 404
+            return jsonify({"message": "SchoolSession not found"}), 404
 
         db.session.delete(session)
 
-    new_session = Session(name="2024/2025 Session")
+    new_session = SchoolSession(name="2024/2025 SchoolSession")
     db.session.add(new_session)
     db.session.commit()
     return jsonify({"message": "Sessions deleted successfully and updated"}), 200
@@ -213,12 +214,12 @@ def delete_session(id):
         return jsonify({"message": "Invalid auth token"})
     if user.get("role") not in ["ADMIN"]:
         return jsonify({"message": "Unauthorized Access"}), 401
-    session = Session.query.get(id)
+    session = SchoolSession.query.get(id)
     if not session:
-        return jsonify({"message": "Session not found"}), 404
+        return jsonify({"message": "SchoolSession not found"}), 404
 
     db.session.delete(session)
     db.session.commit()
     return jsonify(
-        {"status": "success", "message": "Session deleted successfully"}
+        {"status": "success", "message": "SchoolSession deleted successfully"}
     ), 200

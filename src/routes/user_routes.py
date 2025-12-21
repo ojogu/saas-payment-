@@ -5,6 +5,8 @@ from flask import Blueprint, jsonify, request
 from openpyxl import load_workbook
 from sqlalchemy import or_
 
+#everybody has the same default password except super admin. 
+#we have an update password endpoint where users can change their passwords
 from src.model import (
     ClearanceItem,
     ClearancePoint,
@@ -13,10 +15,10 @@ from src.model import (
     MultiClearanceItem,
     Organization,
     PassPorts,
-    Session,
+    SchoolSession,
     User,
-    db,
 )
+from src.utils.db import db
 
 ALLOWED_EXTENSIONS = {"xlsx"}
 
@@ -901,7 +903,7 @@ def bulk_upload_users():
         return jsonify({"message": "No file part"}), 400
 
     organization_id = user.get("organization_id")
-    last_session = Session.query.order_by(Session.id.desc()).first()
+    last_session = SchoolSession.query.order_by(SchoolSession.id.desc()).first()
     if not last_session:
         return jsonify({"message": "No session"})
 
@@ -962,7 +964,7 @@ def bulk_upload_users():
                 skipped.append(matric)
                 continue
             year = 2000 + int(code[0])
-            current_year = Session.query.filter_by(
+            current_year = SchoolSession.query.filter_by(
                 is_active=True, organization_id=organization_id
             ).first()
             years = current_year.end_year - year

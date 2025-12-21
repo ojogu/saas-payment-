@@ -17,6 +17,6 @@ class SchoolSession(BaseModel):
 
     # Relationships
     organization: Mapped["Organization"] = relationship(back_populates="sessions")  # noqa: F821 # type: ignore
-    clearance_items: Mapped[List["ClearanceItem"]] = relationship(
+    clearance_items: Mapped[List["ClearanceItem"]] = relationship( #  noqa: F821 # type: ignore
         back_populates="session", lazy=True, cascade="all, delete-orphan"
     )  # noqa: F821 # type: ignore

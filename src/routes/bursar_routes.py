@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 import jwt
 from flask import Blueprint, jsonify, request
 from sqlalchemy import func
-
+from src.utils.db import db
 from src.model import (
     Clearance,
     ClearanceItem,
@@ -12,7 +12,6 @@ from src.model import (
     PassPorts,
     Payment,
     User,
-    db,
 )
 
 bursar_route = Blueprint("bursar", __name__)

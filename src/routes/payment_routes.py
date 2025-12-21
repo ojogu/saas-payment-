@@ -14,8 +14,8 @@ from src.model import (
     PassivePayment,
     Payment,
     User,
-    db,
 )
+from src.utils.db import db
 
 ALLOWED_EXTENSIONS = {"xlsx"}
 

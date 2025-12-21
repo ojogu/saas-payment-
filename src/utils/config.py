@@ -6,17 +6,27 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 # Get the base directory (project root)
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+# Create the absolute path
+path_obj = BASE_DIR / "db_test" / "school-system_1.db"
+
+
+
 # Upload Configuration
-UPLOAD_FOLDER = BASE_DIR / "qplus" / "src" / "uploads"
+UPLOAD_FOLDER = BASE_DIR / "uploads"
 
 class Config(BaseSettings):
     """Application configuration using Pydantic Settings."""
+    JWT_REFRESH_TOKEN_EXPIRES:int
+    JWT_ACCESS_TOKEN_EXPIRES:int
+    
     
     # Secret Keys
     SECRET_KEY: str
     CLOUDINARY_SECRET_KEY: str
     JWT_SECRET_KEY: str
     super_admin_password:str
+    TEST_DB: str = f"sqlite:///{path_obj.as_posix()}"
     
     # Payment Configuration
     PAYSTACK_LIVE_KEY: str
@@ -47,4 +57,10 @@ class Config(BaseSettings):
 config = Config()
 
 def app_config(app: Flask):
+    
     app.config.from_mapping(config.model_dump())
+class Settings:
+    PROJECT_NAME: str = "Clearance System"
+    PROJECT_VERSION: str = "1.0.0"
+    PROJECT_DESCRIPTION: str = "Backend for Clearance System"
+    API_PREFIX: str = "/api/v1"

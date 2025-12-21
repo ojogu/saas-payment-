@@ -1,5 +1,6 @@
 import jwt
 from flask import Blueprint, jsonify, request
+from src.utils.db import db
 
 from src.model import (
     ClearancePoint,
@@ -8,7 +9,6 @@ from src.model import (
     Faculty,
     Organization,
     User,
-    db,
 )
 
 department_routes = Blueprint("department", __name__)

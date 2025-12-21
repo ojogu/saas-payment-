@@ -8,11 +8,13 @@ from src.model import *
 from src.utils.config import config
 
 from .log import setup_logger
+from sqlalchemy import inspect
 
 logger = setup_logger(__name__, "db.log")
 
 # --- Setup ---
-# 1. Use create_engine as normal
+# 1. Use create_engine 
+# engine = create_engine(config.TEST_DB)
 engine = create_engine(config.PROD_DATABASE_URL)
 
 # 2. Use the standard synchronous Session
@@ -62,3 +64,20 @@ def drop_tables(app: Flask):
     """Drop all tables defined in the models."""
     with app.app_context():
         Base.metadata.drop_all(bind=engine)
+
+
+# Assuming your db object is already created
+# db = SQLAlchemy(app)
+
+def debug_database():
+    # 1. Get the current Database URI
+    current_uri = engine.url
+    print(f"--- Currently connected to: {current_uri} ---")
+
+    # 2. Get the table names
+    inspector = inspect(engine)
+    tables = inspector.get_table_names()
+    
+    print(f"--- Tables found: ({len(tables)}) ---")
+    for table in tables:
+        print(f"  - {table}")

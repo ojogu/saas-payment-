@@ -7,8 +7,8 @@ from src.model import (
     Department,
     MultiClearanceItem,
     Organization,
-    db,
 )
+from src.utils.db import db
 
 clearance_point = Blueprint("clearance_point", __name__)
 

@@ -38,7 +38,7 @@ def create_clearance_item_edit():
     added_docs = data.get("docs")
     officers = data.get("officers")
     is_passive = data.get("is_passive")
-    last_session = Session.query.get(session_id)
+    last_session = SchoolSession.query.get(session_id)
 
     if user.get("role") in ["SUBADMIN"]:
         clearance_point_id = user.get("clearance_point_id")
@@ -190,7 +190,7 @@ def get_clearance_items_edits():
         clearance_point = ClearancePoint.query.filter_by(
             id=item.clearance_point_id
         ).first()
-        session = Session.query.get(item.session_id)
+        session = SchoolSession.query.get(item.session_id)
         data = {
             "id": item.id,
             "item_id": item.item_id,

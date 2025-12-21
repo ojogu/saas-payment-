@@ -33,7 +33,7 @@ class ClearanceItem(BaseModel):
     all_level: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     organization_id: Mapped[int] = mapped_column(ForeignKey("organizations.id"), nullable=False)
     clearance_point_id: Mapped[int] = mapped_column(ForeignKey("clearance_points.id"), nullable=False)
-    session_id: Mapped[int] = mapped_column(ForeignKey("sessions.id"), nullable=False)
+    school_session_id: Mapped[int] = mapped_column(ForeignKey("school_sessions.id"), nullable=False)
     account_id: Mapped[Optional[int]] = mapped_column(ForeignKey("accounts.id"), nullable=True)
     
     # Relationships
@@ -43,7 +43,7 @@ class ClearanceItem(BaseModel):
     passive_payments: Mapped[List["PassivePayment"]] = relationship(back_populates="clearance_item", cascade="all, delete-orphan")  # type: ignore # noqa: F821
     multi_clearance_items: Mapped[List["MultiClearanceItem"]] = relationship(back_populates="clearance_item", cascade="all, delete-orphan")
     clearance_officers: Mapped[List["ClearanceOfficers"]] = relationship(back_populates="clearance_item", cascade="all, delete-orphan")
-    session: Mapped["Session"] = relationship(back_populates="clearance_items")  # type: ignore # noqa: F821
+    school_session: Mapped["SchoolSession"] = relationship(back_populates="clearance_items")  # type: ignore # noqa: F821
     account: Mapped[Optional["Accounts"]] = relationship(back_populates="clearance_items")  # type: ignore # noqa: F821
     multi_levels: Mapped[List["MultiLevel"]] = relationship(back_populates="clearance_item", cascade="all, delete-orphan")
 

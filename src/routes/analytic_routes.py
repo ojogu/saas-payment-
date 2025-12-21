@@ -5,7 +5,7 @@ import jwt
 from flask import Blueprint, jsonify, request, send_file
 from openpyxl import Workbook
 from sqlalchemy import func
-
+from src.utils.db import db
 from src.model import *
 
 analytics_route = Blueprint("analytics", __name__)

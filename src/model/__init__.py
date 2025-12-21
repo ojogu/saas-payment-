@@ -5,10 +5,10 @@ from .notification import Notification_Setting, Use_Notification
 from .organization import Organization, Faculty, Department, DepartmentCode
 from .payment import Accounts, AccountPoints, Payment, PassivePayment
 from .session import SchoolSession
-from .user import User
-from src.utils.db import db
+from .user import User, Role_Enum, Level_Enum
 __all__ = [
-    "db",
+    'Role_Enum',
+    'Level_Enum',
     'Clearance',
     'ClearanceLogs',
     'ClearancePoint',

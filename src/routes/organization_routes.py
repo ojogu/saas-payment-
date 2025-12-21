@@ -2,6 +2,7 @@ import json
 import os
 
 from flask import Blueprint, current_app, jsonify, request, send_from_directory
+from src.utils.db import db
 
 from src.model import (
     Department,
@@ -9,7 +10,6 @@ from src.model import (
     Notification_Setting,
     Organization,
     User,
-    db,
 )
 
 organization_routes = Blueprint("organization", __name__)

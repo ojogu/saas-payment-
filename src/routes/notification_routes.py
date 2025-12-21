@@ -1,6 +1,6 @@
 import jwt
 from flask import Blueprint, jsonify, request
-
+from src.utils.db import db
 from src.model import *
 
 notification_routes = Blueprint("notifications", __name__)
