@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "student_id": 7100,
+    "clearance_item_id": 3,
+    "status": "pending",
+    "payment_id": null,
+    "created_at": "2025-03-25 07:05:20.242559",
+    "remark": "No remark"
+  }
+]

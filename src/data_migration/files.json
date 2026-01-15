@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "clearance_id": null,
+    "file_url": "1742883961165_9.jpg"
+  },
+  {
+    "id": 2,
+    "clearance_id": null,
+    "file_url": "1742883969245_12.jpg"
+  },
+  {
+    "id": 3,
+    "clearance_id": null,
+    "file_url": "1742883977358_1.jpg"
+  },
+  {
+    "id": 4,
+    "clearance_id": null,
+    "file_url": "1742885655314_5.jpg"
+  },
+  {
+    "id": 5,
+    "clearance_id": null,
+    "file_url": "1742885667544_9.jpg"
+  },
+  {
+    "id": 6,
+    "clearance_id": 1,
+    "file_url": "1742886456643_5.jpg"
+  },
+  {
+    "id": 7,
+    "clearance_id": 1,
+    "file_url": "1742886462550_11.jpg"
+  },
+  {
+    "id": 8,
+    "clearance_id": 1,
+    "file_url": "1742886471294_10.jpg"
+  }
+]

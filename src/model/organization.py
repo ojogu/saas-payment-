@@ -1,4 +1,5 @@
 from typing import List, Optional
+import uuid
 
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -23,6 +24,7 @@ class Organization(BaseModel):
     slogan: Mapped[Optional[str]] = mapped_column(
         String(120), nullable=True, unique=True
     )
+
 
     # Relationships
     users: Mapped[List["User"]] = relationship(  # noqa: F821 # type: ignore
@@ -49,6 +51,7 @@ class Organization(BaseModel):
     accounts: Mapped[List["Accounts"]] = relationship(  # noqa: F821 # type: ignore
         back_populates="organization", lazy=True, cascade="all, delete-orphan"
     )
+    #one to many relationship 
     school_sessions: Mapped[List["SchoolSession"]] = relationship(  # noqa: F821 # type: ignore
         back_populates="organization", lazy=True, cascade="all, delete-orphan"
     )
@@ -58,7 +61,7 @@ class Faculty(BaseModel):
     __tablename__ = "faculties"
 
     name: Mapped[str] = mapped_column(String(120), nullable=False)
-    organization_id: Mapped[int] = mapped_column(
+    organization_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("organizations.id"), nullable=False
     )
 
@@ -76,10 +79,10 @@ class Department(BaseModel):
     __tablename__ = "departments"
 
     name: Mapped[str] = mapped_column(String(120), nullable=False)
-    organization_id: Mapped[int] = mapped_column(
+    organization_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("organizations.id"), nullable=False
     )
-    faculty_id: Mapped[int] = mapped_column(ForeignKey("faculties.id"), nullable=False)
+    faculty_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("faculties.id"), nullable=False)
 
     # Relationships
     organization: Mapped["Organization"] = relationship(back_populates="departments")
@@ -99,10 +102,10 @@ class DepartmentCode(BaseModel):
     __tablename__ = "department_code"
 
     code: Mapped[str] = mapped_column(String(10), nullable=False)
-    organization_id: Mapped[int] = mapped_column(
+    organization_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("organizations.id"), nullable=False
     )
-    department_id: Mapped[int] = mapped_column(
+    department_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("departments.id"), nullable=False
     )
 

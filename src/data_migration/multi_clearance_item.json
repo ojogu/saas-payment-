@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "clearance_item_id": 2,
+    "department_id": 13
+  },
+  {
+    "id": 2,
+    "clearance_item_id": 2,
+    "department_id": 11
+  },
+  {
+    "id": 3,
+    "clearance_item_id": 2,
+    "department_id": 8
+  }
+]

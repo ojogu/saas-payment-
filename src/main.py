@@ -18,7 +18,7 @@ from src.utils.db import create_tables, drop_tables, init_db, close_db, debug_da
 from flask_cors import CORS
 from src.utils.config import Settings, app_config
 from src.utils.exception import register_error_handlers
-from src.utils.dependencies import jwt
+from src.utils.dependencies import jwt, setup_dependencies
 
 def create_app():
     app=Flask(__name__)
@@ -32,6 +32,9 @@ def create_app():
     
     #error handling
     register_error_handlers(app)
+    
+    #setup depedencies
+    setup_dependencies(app)
     
     jwt.init_app(app)
     

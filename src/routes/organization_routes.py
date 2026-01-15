@@ -1,24 +1,18 @@
 import json
 import os
-
+import uuid
+from http import HTTPStatus
 from flask import Blueprint, current_app, jsonify, request, send_from_directory
-from src.utils.db import db
+# from src.utils.db import db
+from src.utils.response import success_response
+from src.utils.config import allowed_file
+from src.schema.organization import CreateOrganization, UpdateOrganization
+from src.service.organization_service import OrganizationService
 
-from src.model import (
-    Department,
-    Faculty,
-    Notification_Setting,
-    Organization,
-    User,
-)
 
 organization_routes = Blueprint("organization", __name__)
 
-ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 
-
-def allowed_file(filename):
-    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @organization_routes.route("/uploads/<filename>")
@@ -26,94 +20,100 @@ def uploaded_file(filename):
     return send_from_directory(current_app.config["UPLOAD_FOLDER"], filename)
 
 
-@organization_routes.route("/organization/create", methods=["POST"])
-def create_organization():
-    json_data = request.form.get("data")
-    data = json.loads(json_data)
+@organization_routes.route("/organizations", methods=["POST"])
+def create_organization(organization_service: OrganizationService):
+    #content-type - multipart/form-data
+    data = request.form.to_dict()
+    files = request.files.to_dict()
     name = data.get("name")
     phone = data.get("phone")
     email = data.get("email")
     address = data.get("address")
     slogan = data.get("slogan")
-    logo = data.get("logo")
-    if Organization.query.filter_by(name=name).first():
-        return jsonify({"message": "Organization already exists"}), 400
-    if logo != "":
-        if "file" not in request.files:
-            return "No file part"
 
+    logo_filename = ""
+    if "file" in request.files:
         file = request.files["file"]
-
-        if file.filename == "":
-            return "No selected file"
-
-        if file and allowed_file(file.filename):
+        if file.filename != "" and allowed_file(file.filename):
             filepath = os.path.join(current_app.config["UPLOAD_FOLDER"], file.filename)
             file.save(filepath)
-    organization = Organization(
-        name=name, phone=phone, email=email, address=address, slogan=slogan, logo=logo
-    )
-    db.session.add(organization)
-    db.session.commit()
-    return jsonify(
-        {
-            "status": "success",
-            "message": "Organization created successfully",
-            "id": organization.id,
-        }
+            logo_filename = file.filename
+
+    validated_data = CreateOrganization(
+        name=name,
+        phone=phone,
+        email=email,
+        address=address,
+        slogan=slogan,
+        logo=logo_filename
     )
 
+    
+    organization = organization_service.create_organization(validated_data)
+    return success_response(
+            status_code=HTTPStatus.OK,
+            message= "Organization created successfully",
+            data = CreateOrganization(organization).model_dump()
+        )
 
-@organization_routes.route("/organizations/all", methods=["GET"])
-def get_organizations():
-    organizations = Organization.query.all()
+
+
+
+@organization_routes.route("/organizations", methods=["GET"])
+def get_organizations(organization_service: OrganizationService):
+    organizations = organization_service.fetch_all_organizations()
     data = []
     for org in organizations:
-        users = User.query.filter_by(organization_id=org.id).all()
-        department = Department.query.filter_by(organization_id=org.id).all()
-        faculty = Faculty.query.filter_by(organization_id=org.id).all()
         org_data = {
+                "id": org.id,
+                "name": org.name,
+                "phone": org.phone,
+                "email": org.email,
+                "users": len(org.users),
+                "departments": len(org.departments),
+                "faculties": len(org.faculties),
+            }
+        data.append(org_data)
+        return success_response(
+            status_code=HTTPStatus.OK,
+            message="Successfully got all organizations",
+            data=data
+        )
+
+
+
+@organization_routes.route("/organization/<id>", methods=["GET"])
+def get_organization(id, organization_service: OrganizationService):
+    organization_id = uuid.UUID(id)
+    org = organization_service.fetch_one_organization(organization_id)
+    org_data = {
             "id": org.id,
             "name": org.name,
             "phone": org.phone,
             "email": org.email,
-            "users": len(users),
+            "slogan": org.slogan,
+            "logo": request.host_url + "qplus/api/uploads/" + org.logo
+            if org.logo
+            else None,
+            "address": org.address,
         }
-        data.append(org_data)
-    return jsonify(
-        {
-            "status": "success",
-            "message": "successfully got all organizations",
-            "data": data,
-        }
-    )
+    return success_response(
+            status_code=HTTPStatus.OK,
+            message="Successfully got organization",
+            data=org_data
+        )
 
-
-@organization_routes.route("/organization/<id>", methods=["GET"])
-def get_organization(id):
-    org = Organization.query.get(id)
-    if not org:
-        return jsonify({"message": "Organization Does not exist"})
-    org_data = {
-        "id": org.id,
-        "name": org.name,
-        "phone": org.phone,
-        "email": org.email,
-        "slogan": org.slogan,
-        "logo": request.host_url + "qplus/api/uploads/" + org.logo
-        if org.logo
-        else None,
-        "address": org.address,
-    }
-    return jsonify({"status": "success", "data": org_data})
 
 
 @organization_routes.route("/organization/<id>", methods=["PUT"])
-def update_organization(id):
-    org = Organization.query.get(id)
-    if not org:
-        return jsonify({"message": "Organization Does not exist"})
+def update_organization(id, organization_service: OrganizationService):
+    organization_id = uuid.UUID(id)
+        
+        # Parse form data
     json_data = request.form.get("data")
+    if not json_data:
+            return jsonify({"message": "No data provided"}), 400
+            
     data = json.loads(json_data)
     name = data.get("name")
     phone = data.get("phone")
@@ -122,46 +122,52 @@ def update_organization(id):
     slogan = data.get("slogan")
     logo = data.get("logo")
 
-    org.name = name
-    org.phone = phone
-    org.email = email
-    org.address = address
-    org.slogan = slogan
-
-    if logo != "":
-        if "file" not in request.files:
-            return "No file part"
-
+    # Handle file upload
+    logo_filename = logo or ""
+    if "file" in request.files:
         file = request.files["file"]
-
-        if file.filename == "":
-            return "No selected file"
-
-        if file and allowed_file(file.filename):
-            filepath = os.path.join(current_app.config["UPLOAD_FOLDER"], file.filename)
+        if file.filename != "" and allowed_file(file.filename):
+            filepath = os.path.join(current_app.confi["UPLOAD_FOLDER"], file.filename)
             file.save(filepath)
-    org.logo = logo
+            logo_filename = file.filename
 
-    db.session.commit()
-    return jsonify({"status": "success", "message": "Successfully Updated"})
+     # Prepare update data
+    update_data = {}
+    if name is not None:
+        update_data["name"] = name
+    if phone is not None:
+        update_data["phone"] = phone
+    if email is not None:
+        update_data["email"] = email
+    if address is not None:
+        update_data["address"] = address
+    if slogan is not None:
+        update_data["slogan"] = slogan
+    if logo_filename:
+        update_data["logo"] = logo_filename
+
+    organization = organization_service.update_organization(organization_id, update_data)
+    return success_response(
+            status_code=HTTPStatus.OK,
+            message="Organization updated successfully",
+            data=UpdateOrganization(
+                name=organization.name,
+                phone=organization.phone,
+                email=organization.email,
+                address=organization.address,
+                slogan=organization.slogan,
+                logo=organization.logo
+            ).model_dump()
+        )
+
 
 
 @organization_routes.route("/organization/<id>", methods=["DELETE"])
-def delete_organization(id):
-    item = Organization.query.get(id)
+def delete_organization(id, organization_service: OrganizationService):
+    organization_id = uuid.UUID(id)
+    organization_service.delete_organization(organization_id)
+    return success_response(
+            status_code=HTTPStatus.OK,
+            message="Organization deleted successfully"
+        )
 
-    if not item:
-        return jsonify({"error": "Organization not found"}), 404
-
-    notification_settings = Notification_Setting.query.filter_by(
-        organization_id=id
-    ).first()
-    if notification_settings:
-        db.session.delete(notification_settings)
-
-    db.session.delete(item)
-    db.session.commit()
-
-    return jsonify(
-        {"status": "success", "message": "Organization deleted successfully"}
-    ), 200

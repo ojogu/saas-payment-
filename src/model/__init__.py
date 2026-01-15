@@ -1,10 +1,10 @@
 from .clearance import Clearance, ClearanceLogs
 from .clearance_point import ClearancePoint, ClearanceItem, ClearanceItemEdit, ClearanceOfficers, MultiClearanceItem, MultiLevel, ClearanceDocuments
 from .file import Files, PassPorts
-from .notification import Notification_Setting, Use_Notification
+from .notification import Notification_Setting, User_Notification
 from .organization import Organization, Faculty, Department, DepartmentCode
 from .payment import Accounts, AccountPoints, Payment, PassivePayment
-from .session import SchoolSession
+from .school_session import SchoolSession
 from .user import User, Role_Enum, Level_Enum
 __all__ = [
     'Role_Enum',
@@ -21,7 +21,7 @@ __all__ = [
     'Files',
     'PassPorts',
     'Notification_Setting',
-    'Use_Notification',
+    'User_Notification',
     'Organization',
     'Faculty',
     'Department',

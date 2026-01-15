@@ -121,7 +121,7 @@
 #     )
 
 
-# class Use_Notification(BaseModel):
+# class User_Notification(BaseModel):
 #     __tablename__ = "use_notifications"
 #     id = db.Column(db.Integer, primary_key=True)
 #     student_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)

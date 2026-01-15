@@ -36,15 +36,15 @@ class BaseModel(Base):
 
 
     # Example: Automatically generate table names
-    @declared_attr.directive
-    def __tablename__(cls) -> str:
-        # Converts CamelCase class name to snake_case table name
-        import re
+    # @declared_attr.directive
+    # def __tablename__(cls) -> str:
+    #     # Converts CamelCase class name to snake_case table name
+    #     import re
 
-        name = cls.__name__
-        name = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
-        name = re.sub("([a-z0-9])([A-Z])", r"\1_\2", name).lower()
-        return name + "s"  # Pluralize table names
+    #     name = cls.__name__
+    #     name = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
+    #     name = re.sub("([a-z0-9])([A-Z])", r"\1_\2", name).lower()
+    #     return name + "s"  # Pluralize table names
 
 
     def to_dict(self) -> Dict[str, Any]:
@@ -52,13 +52,3 @@ class BaseModel(Base):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
     
-    # Example: Common primary key
-    # id: Mapped[int] = mapped_column(primary_key=True, index=True)
-
-    # Example: Common timestamp columns
-    # created_at: Mapped[datetime] = mapped_column(
-    #     server_default=func.now(), nullable=False
-    # )
-    # updated_at: Mapped[datetime] = mapped_column(
-    #     server_default=func.now(), onupdate=func.now(), nullable=False
-    # )

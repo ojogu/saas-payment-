@@ -1,4 +1,5 @@
 from typing import Optional
+import uuid
 
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -9,9 +10,11 @@ from src.base.model import BaseModel
 class Files(BaseModel):
     __tablename__ = "files"
 
+    #fk
     clearance_id: Mapped[Optional[int]] = mapped_column(
         ForeignKey("clearances.id"), nullable=True
     )
+    
     file_url: Mapped[Optional[str]] = mapped_column(
         String(250), nullable=True, unique=True
     )
@@ -24,7 +27,9 @@ class Files(BaseModel):
 class PassPorts(BaseModel):
     __tablename__ = "passports"
 
-    student_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
+    #fk
+    student_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("users.id"), nullable=False)
+    
     file_url: Mapped[Optional[str]] = mapped_column(
         String(250), nullable=True, unique=False
     )

@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "AGRICULTURE AND FORESTRY",
+    "organization_id": 1
+  },
+  {
+    "id": 2,
+    "name": "BASIC MEDICAL SCIENCES",
+    "organization_id": 1
+  },
+  {
+    "id": 3,
+    "name": "BIOLOGICAL SCIENCES",
+    "organization_id": 1
+  },
+  {
+    "id": 4,
+    "name": "COMMUNICATION TECHNOLOGY",
+    "organization_id": 1
+  },
+  {
+    "id": 5,
+    "name": "EDUCATION",
+    "organization_id": 1
+  },
+  {
+    "id": 6,
+    "name": "ENGINEERING",
+    "organization_id": 1
+  },
+  {
+    "id": 7,
+    "name": "ENVIRONMENTAL MANAGEMENT",
+    "organization_id": 1
+  },
+  {
+    "id": 8,
+    "name": "ENVIRONMENTAL SCIENCES",
+    "organization_id": 1
+  },
+  {
+    "id": 9,
+    "name": "MANAGEMENT SCIENCE",
+    "organization_id": 1
+  },
+  {
+    "id": 10,
+    "name": "PHYSICAL SCIENCE",
+    "organization_id": 1
+  },
+  {
+    "id": 11,
+    "name": "GENERAL",
+    "organization_id": 1
+  }
+]

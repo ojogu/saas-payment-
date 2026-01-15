@@ -1,5 +1,6 @@
 from typing import List, Optional
-from sqlalchemy import String, Integer, Float, Boolean, JSON, ForeignKey
+import uuid
+from sqlalchemy import String, Float, Boolean, JSON, ForeignKey, Uuid
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from src.base.model import BaseModel
 
@@ -9,7 +10,9 @@ class ClearancePoint(BaseModel):
     
     
     name: Mapped[str] = mapped_column(String(120), nullable=False)
-    organization_id: Mapped[int] = mapped_column(ForeignKey("organizations.id"), nullable=False)
+    
+    #fk
+    organization_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("organizations.id"), nullable=False)
     
     # Relationships
     organization: Mapped["Organization"] = relationship(back_populates="clearance_points")  # pyright: ignore[reportUndefinedVariable] # noqa: F821
@@ -31,10 +34,12 @@ class ClearanceItem(BaseModel):
     is_passive: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     amount: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
     all_level: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
-    organization_id: Mapped[int] = mapped_column(ForeignKey("organizations.id"), nullable=False)
-    clearance_point_id: Mapped[int] = mapped_column(ForeignKey("clearance_points.id"), nullable=False)
-    school_session_id: Mapped[int] = mapped_column(ForeignKey("school_sessions.id"), nullable=False)
-    account_id: Mapped[Optional[int]] = mapped_column(ForeignKey("accounts.id"), nullable=True)
+    
+    #fk
+    organization_id: Mapped[Optional[uuid.UUID]] =  mapped_column(ForeignKey("organizations.id"), nullable=False)
+    clearance_point_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("clearance_points.id"), nullable=False)
+    school_session_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("school_sessions.id"), nullable=False)
+    account_id: Mapped[Optional[Optional[uuid.UUID]]] = mapped_column(ForeignKey("accounts.id"), nullable=True)
     
     # Relationships
     organization: Mapped["Organization"] = relationship(back_populates="clearance_items") # type: ignore  # noqa: F821
@@ -51,8 +56,12 @@ class ClearanceItem(BaseModel):
 class ClearanceItemEdit(BaseModel):
     __tablename__ = "clearance_item_edit"
     
-    
-    item_id: Mapped[Optional[int]] = mapped_column(ForeignKey("clearance_items.id"), nullable=True)
+    #fk
+    item_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("clearance_items.id"), nullable=True)
+    organization_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("organizations.id"), nullable=False)
+    clearance_point_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("clearance_points.id"), nullable=False)
+    school_session_id: Mapped[Optional[uuid.UUID]] = mapped_column(Uuid)
+    account_id: Mapped[Optional[uuid.UUID]] = mapped_column(Uuid)
     name: Mapped[str] = mapped_column(String(120), nullable=False)
     desc: Mapped[str] = mapped_column(String(250), nullable=False)
     is_global: Mapped[bool] = mapped_column(Boolean, default=False)
@@ -63,16 +72,16 @@ class ClearanceItemEdit(BaseModel):
     amount: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
     all_level: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     multi_edits: Mapped[Optional[dict]] = mapped_column(JSON)
-    organization_id: Mapped[int] = mapped_column(ForeignKey("organizations.id"), nullable=False)
-    clearance_point_id: Mapped[int] = mapped_column(ForeignKey("clearance_points.id"), nullable=False)
-    session_id: Mapped[Optional[int]] = mapped_column(Integer)
-    account_id: Mapped[Optional[int]] = mapped_column(Integer)
+
+
 
 
 class ClearanceOfficers(BaseModel):
     __tablename__ = "clearance_officers"
-    officer_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
-    clearance_item_id: Mapped[int] = mapped_column(ForeignKey("clearance_items.id"), nullable=False)
+    
+    #fk
+    officer_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("users.id"), nullable=False)
+    clearance_item_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("clearance_items.id"), nullable=False)
     
     # Relationships
     clearance_item: Mapped["ClearanceItem"] = relationship(back_populates="clearance_officers")
@@ -81,8 +90,9 @@ class ClearanceOfficers(BaseModel):
 class MultiClearanceItem(BaseModel):
     __tablename__ = "multi_clearance_item"
     
-    clearance_item_id: Mapped[int] = mapped_column(ForeignKey("clearance_items.id"), nullable=False)
-    department_id: Mapped[int] = mapped_column(ForeignKey("departments.id"), nullable=False)
+    #fk
+    clearance_item_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("clearance_items.id"), nullable=False)
+    department_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("departments.id"), nullable=False)
     
     # Relationships
     department: Mapped["Department"] = relationship(back_populates="multi_clearance_items")  # pyright: ignore[reportUndefinedVariable] # noqa: F821
@@ -91,9 +101,9 @@ class MultiClearanceItem(BaseModel):
 
 class MultiLevel(BaseModel):
     __tablename__ = "multi_levels"
+    #fk
+    clearance_item_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("clearance_items.id"), nullable=False)
     
-    
-    clearance_item_id: Mapped[int] = mapped_column(ForeignKey("clearance_items.id"), nullable=False)
     level: Mapped[Optional[str]] = mapped_column(String(20), nullable=True)
     
     # Relationships
@@ -105,4 +115,6 @@ class ClearanceDocuments(BaseModel):
     
     
     desc: Mapped[str] = mapped_column(String(250), nullable=False)
-    clearance_item_id: Mapped[int] = mapped_column(ForeignKey("clearance_items.id"), nullable=False)
+    
+    #fk
+    clearance_item_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("clearance_items.id"), nullable=False)

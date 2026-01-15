@@ -5,6 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "cloudinary>=1.44.1",
+    "dishka[flask]>=1.7.2",
     "flask>=3.1.2",
     "flask-cors>=6.0.2",
     "flask-jwt-extended>=4.7.1",

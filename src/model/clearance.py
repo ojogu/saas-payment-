@@ -1,7 +1,8 @@
-from datetime import datetime
-from typing import List, Optional
 
-from sqlalchemy import DateTime, ForeignKey, String
+from typing import List, Optional
+import uuid
+
+from sqlalchemy import  ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.base.model import BaseModel
@@ -10,15 +11,15 @@ from src.base.model import BaseModel
 class Clearance(BaseModel):
     __tablename__ = "clearances"
 
-    student_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
-    clearance_item_id: Mapped[int] = mapped_column(
+    #fk
+    student_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("users.id"), nullable=False)
+    clearance_item_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("clearance_items.id"), nullable=False
     )
-    status: Mapped[str] = mapped_column(String(20), default="pending")
-    payment_id: Mapped[Optional[int]] = mapped_column(
+    payment_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("payments.id"), nullable=True
     )
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now())
+    status: Mapped[str] = mapped_column(String(20), default="pending")
     remark: Mapped[str] = mapped_column(String(255), default="No remark")
 
     # Relationships
@@ -37,8 +38,9 @@ class ClearanceLogs(BaseModel):
     email: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
     matric: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
     role: Mapped[str] = mapped_column(String(255), nullable=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now())
-    organization_id: Mapped[int] = mapped_column(
+    
+    #fk
+    organization_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("organizations.id"), nullable=False
     )
 

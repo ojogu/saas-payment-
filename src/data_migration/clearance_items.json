@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "New",
+    "desc": "New Description",
+    "is_global": 1,
+    "payment_required": 1,
+    "document_required": 1,
+    "is_multi": 0,
+    "amount": 3000,
+    "level": "100",
+    "organization_id": 1,
+    "department_id": 73,
+    "session_id": 4,
+    "account_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Test",
+    "desc": "Test Description",
+    "is_global": 0,
+    "payment_required": 1,
+    "document_required": 1,
+    "is_multi": 1,
+    "amount": 1000,
+    "level": "100",
+    "organization_id": 1,
+    "department_id": 1,
+    "session_id": 4,
+    "account_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Item",
+    "desc": "Item description",
+    "is_global": 1,
+    "payment_required": 0,
+    "document_required": 1,
+    "is_multi": 0,
+    "amount": null,
+    "level": "100",
+    "organization_id": 1,
+    "department_id": 73,
+    "session_id": 4,
+    "account_id": null
+  }
+]

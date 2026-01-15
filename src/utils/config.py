@@ -6,11 +6,14 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 # Get the base directory (project root)
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
 # Create the absolute path
 path_obj = BASE_DIR / "db_test" / "school-system_1.db"
 
 
+
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Upload Configuration
 UPLOAD_FOLDER = BASE_DIR / "uploads"

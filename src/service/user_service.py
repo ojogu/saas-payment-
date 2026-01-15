@@ -146,6 +146,7 @@ class UserService():
     def get_current_user(self):
         user_id = get_jwt_identity() 
         if not user_id:
+            
             return 
         user = self.check_if_user_exist_by_id(user_id)
         if not user:

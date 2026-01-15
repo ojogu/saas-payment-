@@ -1,7 +1,8 @@
 import jwt
 from flask import Blueprint, jsonify, request
-from src.utils.db import db
+
 from src.model import *
+from src.utils.db import db
 
 notification_routes = Blueprint("notifications", __name__)
 
@@ -45,7 +46,7 @@ def notification_settings():
             organization_id=user.get("organization_id")
         ).first()
         if notification_setting:
-            # query = db.session.query(User).join(Use_Notification)
+            # query = db.session.query(User).join(User_Notification)
             # query = query.filter(User.organization_id == user.get('organization_id'))
             # for q in query:
             #     db.session.delete(q)
@@ -100,7 +101,7 @@ def use_notification():
         ).first()
         if not notification_settings:
             return jsonify({"message": "No Notify"})
-        notification_setting = Use_Notification.query.filter_by(
+        notification_setting = User_Notification.query.filter_by(
             student_id=user.get("id")
         ).first()
         if notification_setting:
@@ -122,7 +123,7 @@ def use_notification():
     use_notify = data.get("use_notify")
 
     if use_notify == False:
-        notification_setting = Use_Notification.query.filter_by(
+        notification_setting = User_Notification.query.filter_by(
             student_id=user.get("id")
         ).first()
         if notification_setting:
@@ -135,14 +136,14 @@ def use_notification():
                 }
             )
     if email != "" and phone != "":
-        notification_setting = Use_Notification.query.filter_by(
+        notification_setting = User_Notification.query.filter_by(
             student_id=user.get("id")
         ).first()
         if notification_setting:
             notification_setting.email = email
             notification_setting.phone = phone
         else:
-            new_notification_setting = Use_Notification(
+            new_notification_setting = User_Notification(
                 email=email, phone=phone, student_id=user.get("id")
             )
             db.session.add(new_notification_setting)
