@@ -61,9 +61,41 @@ def create_tables(app: Flask):
 
 
 def drop_tables(app: Flask):
-    """Drop all tables defined in the models."""
+    """
+    Drop all tables in the database, ignoring foreign key constraints.
+
+    This synchronous function uses the SQLAlchemy engine to drop all tables
+    that are defined in the Base metadata. It disables foreign key checks
+    during the drop operation to avoid constraint violations.
+
+    Caution: This operation will delete all data in the tables. Use with care.
+    """
     with app.app_context():
-        Base.metadata.drop_all(bind=engine)
+        with engine.begin() as conn:
+            # Disable foreign key checks (database-specific)
+            dialect_name = conn.dialect.name
+
+            if dialect_name == 'postgresql':
+                # PostgreSQL: Explicitly drop each table with CASCADE
+                from sqlalchemy import text
+                for table in reversed(Base.metadata.sorted_tables):
+                    conn.execute(text(f'DROP TABLE IF EXISTS "{table.name}" CASCADE'))
+
+            elif dialect_name == 'mysql':
+                # MySQL: Disable foreign key checks
+                conn.execute(text('SET FOREIGN_KEY_CHECKS = 0'))
+                Base.metadata.drop_all(bind=engine)
+                conn.execute(text('SET FOREIGN_KEY_CHECKS = 1'))
+
+            elif dialect_name == 'sqlite':
+                # SQLite: Disable foreign key enforcement
+                conn.execute(text('PRAGMA foreign_keys = OFF'))
+                Base.metadata.drop_all(bind=engine)
+                conn.execute(text('PRAGMA foreign_keys = ON'))
+
+            else:
+                # Default fallback for other databases
+                Base.metadata.drop_all(bind=engine)
 
 
 # Assuming your db object is already created

@@ -24,7 +24,7 @@ def create_app():
     app=Flask(__name__)
     
     #db configs
-    drop_tables(app)
+    # drop_tables(app)
     create_tables(app)
     init_db(app)
     close_db(app)
