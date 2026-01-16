@@ -84,6 +84,7 @@ class OrganizationService():
     def fetch_one_organization(self, organization_id: uuid.UUID):
         organization = self.check_if_organization_exist_by_id(organization_id)
         if not organization:
+            logger.warning(f"Organization with id {organization_id} not found")
             raise NotFoundError("Organization not found")
         return organization
 
