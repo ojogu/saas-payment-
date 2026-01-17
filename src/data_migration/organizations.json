@@ -1,5 +1,42 @@
 [
   {
-    "name": "University Of Cross River"
+    "name": "University Of Cross River",
+    "phone": "+1-234-567-8901",
+    "email": "info@universityofcrossriver.edu",
+    "address": "123 University Avenue, Cross River State, Nigeria",
+    "slogan": "Excellence in Education",
+    "logo": "crutech-logo.png"
+  },
+  {
+    "name": "Lagos State University",
+    "phone": "+1-345-678-9012",
+    "email": "contact@lasu.edu.ng",
+    "address": "456 University Road, Lagos State, Nigeria",
+    "slogan": "Knowledge for Development",
+    "logo": "lasu-logo.png"
+  },
+  {
+    "name": "University of Ibadan",
+    "phone": "+1-456-789-0123",
+    "email": "admin@ui.edu.ng",
+    "address": "789 Academic Boulevard, Ibadan, Oyo State, Nigeria",
+    "slogan": "Recte Sapere Fons",
+    "logo": "ui-logo.png"
+  },
+  {
+    "name": "Obafemi Awolowo University",
+    "phone": "+1-567-890-1234",
+    "email": "info@oauife.edu.ng",
+    "address": "101 University Drive, Ile-Ife, Osun State, Nigeria",
+    "slogan": "For Learning and Culture",
+    "logo": "oau-logo.png"
+  },
+  {
+    "name": "University of Nigeria, Nsukka",
+    "phone": "+1-678-901-2345",
+    "email": "support@unn.edu.ng",
+    "address": "202 Campus Lane, Nsukka, Enugu State, Nigeria",
+    "slogan": "No Retreat, No Surrender",
+    "logo": "unn-logo.png"
   }
 ]

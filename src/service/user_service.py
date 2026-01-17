@@ -2,18 +2,20 @@ from sqlalchemy.orm import Session
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
 from src.auth.service import verify_password, password_hash
-from src.model import Department, Organization, PassPorts, User, Role_Enum
+from src.model import Department, Organization, PassPorts, User, Role_Enum, Level_Enum
 from src.base.exception import (
     NotFoundError,
     AlreadyExistsError,
     InvalidEmailPassword,
     ServerError,
     AuthorizationError
-    
+
 )
+from src.schema.user import CreateUser
 from flask_jwt_extended import get_jwt_identity
 from src.auth.schema import Login
 from src.schema.user import UpdatePassword
+from src.utils.config import config
 from src.utils.log import setup_logger
 logger = setup_logger(__name__, "user_service.log")
 
@@ -21,8 +23,30 @@ class UserService():
     def __init__(self, db:Session):
         self.db = db 
     
-    def create_user(self):
-        pass 
+    def create_user(self, user_data:CreateUser):
+        user = self.check_if_user_exist_by_email(user_data.email)
+        if user:
+            raise AlreadyExistsError()
+        #other checks
+        
+        new_user = User(
+            firstname=user_data.firstname,
+            lastname=user_data.lastname,
+            middlename=user_data.middlename,
+            email=user_data.email,
+            matric_number=user_data.matric_number,
+            phone_number=user_data.phone_number,
+            level=Level_Enum(user_data.level) if user_data.level is not None else None,
+            password_hash=password_hash(user_data.password),
+            role=user_data.role,
+            organization_id=user_data.organization_id,
+            faculty_id=user_data.faculty_id,
+            department_id=user_data.department_id,
+            clearance_point_id=user_data.clearance_point_id
+        )
+        self.db.add(new_user)
+        self.db.commit()
+        return new_user
     
     def check_if_user_exist_by_email(self, email:str):
         stmt = self.db.execute(
@@ -144,11 +168,15 @@ class UserService():
         pass 
     
     def get_current_user(self):
-        user_id = get_jwt_identity() 
+        user_id = get_jwt_identity()
         if not user_id:
-            
-            return 
+            return None
         user = self.check_if_user_exist_by_id(user_id)
         if not user:
             raise NotFoundError(f"{user_id} not found")
-        return user
+        return {
+            "id": str(user.id),
+            "role": user.role.value,
+            "organization_id": user.organization_id,
+            "clearance_point_id": user.clearance_point_id,
+        }

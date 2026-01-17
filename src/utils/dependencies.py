@@ -25,4 +25,4 @@ class Dependencies(Provider):
     
 def setup_dependencies(app:Flask):
     container = make_container(Dependencies())
-    setup_dishka(container, app)
+    setup_dishka(container, app, auto_inject=True)

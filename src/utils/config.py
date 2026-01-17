@@ -16,7 +16,7 @@ def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Upload Configuration
-UPLOAD_FOLDER = BASE_DIR / "uploads"
+# UPLOAD_FOLDER = BASE_DIR / "uploads"
 
 class Config(BaseSettings):
     """Application configuration using Pydantic Settings."""
@@ -28,7 +28,14 @@ class Config(BaseSettings):
     SECRET_KEY: str
     CLOUDINARY_SECRET_KEY: str
     JWT_SECRET_KEY: str
-    super_admin_password:str
+    # USER_JWT_SECRET_KEY: str
+    super_admin_password: str
+    admin_password: str
+    sub_admin_password: str
+    bursar_password: str
+    data_password: str
+    audit_password: str
+    default_password: str
     TEST_DB: str = f"sqlite:///{path_obj.as_posix()}"
     
     # Payment Configuration
@@ -45,7 +52,7 @@ class Config(BaseSettings):
     Twilio_token: str
     
     # Upload Configuration
-    # UPLOAD_FOLDER: Path
+    UPLOAD_FOLDER: Path = BASE_DIR / "uploads"
     
     
     model_config = SettingsConfigDict(
@@ -60,8 +67,8 @@ class Config(BaseSettings):
 config = Config()
 
 def app_config(app: Flask):
-    
     app.config.from_mapping(config.model_dump())
+    
 class Settings:
     PROJECT_NAME: str = "Clearance System"
     PROJECT_VERSION: str = "1.0.0"

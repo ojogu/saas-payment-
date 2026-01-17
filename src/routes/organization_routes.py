@@ -8,12 +8,75 @@ from src.utils.response import success_response
 from src.utils.config import allowed_file
 from src.schema.organization import CreateOrganization, UpdateOrganization
 from src.service.organization_service import OrganizationService
-
-
+from dishka.integrations.flask import inject, FromDishka
+from werkzeug.utils import secure_filename
+from src.utils.log import setup_logger
+from src.base.exception import (
+    BadRequest)
+logger = setup_logger(__name__, "organization_route.log")
 organization_routes = Blueprint("organization", __name__)
 
 
+def validate_image(file):
+    if not file:
+        logger.warning("No image file provided for validation")
+        raise BadRequest("No image provided")
 
+    filename = secure_filename(file.filename)
+    logger.info(f"Validating image file: {filename}")
+
+    # Check file extension
+    allowed_extensions = {'png', 'jpg', 'jpeg', 'gif'}
+
+    if '.' not in filename:
+        logger.warning(f"File {filename} has no extension")
+        raise BadRequest("File has no extension")
+
+    ext = filename.rsplit('.', 1)[1].lower()
+    if ext not in allowed_extensions:
+        logger.warning(f"Invalid file type for {filename}: {ext}. Allowed: {allowed_extensions}")
+        raise BadRequest(f"Invalid file type. Allowed: {allowed_extensions}")
+
+    # Check file size (e.g., max 5MB)
+    file.seek(0, os.SEEK_END)
+    file_size = file.tell()
+    file.seek(0)  # Reset file pointer
+
+    if file_size > 5 * 1024 * 1024:  # 5MB
+        logger.warning(f"File {filename} too large: {file_size} bytes")
+        raise BadRequest("File too large. Max size: 5MB")
+
+    logger.info(f"Image file {filename} validation successful")
+    return True
+
+def save_uploaded_file(file):
+    """Safely save an uploaded file"""
+    upload_folder = current_app.config["UPLOAD_FOLDER"]
+
+    # 1. Secure the filename
+    filename = secure_filename(file.filename)
+
+    # 2. Check if filename is empty (can happen with non-ASCII names)
+    if not filename:
+        filename = 'unnamed_file'
+        logger.warning("Filename was empty after securing, using default: unnamed_file")
+
+    # 3. Add UUID for uniqueness
+    name, ext = os.path.splitext(filename)
+    unique_filename = f"{uuid.uuid4().hex[:8]}_{name}{ext}"
+    logger.info(f"Generated unique filename: {unique_filename}")
+
+    # 4. Create full path
+    filepath = os.path.join(upload_folder, unique_filename)
+
+    # 5. Ensure upload directory exists
+    os.makedirs(upload_folder, exist_ok=True)
+
+    # 6. Save the file
+    file.save(filepath)
+    logger.info(f"File saved successfully at: {filepath}")
+
+    return unique_filename
 
 @organization_routes.route("/uploads/<filename>")
 def uploaded_file(filename):
@@ -21,87 +84,70 @@ def uploaded_file(filename):
 
 
 @organization_routes.route("/organizations", methods=["POST"])
-def create_organization(organization_service: OrganizationService):
+@inject
+def create_organization(organization_service: FromDishka[OrganizationService]):
+    #protected route/rbac
     #content-type - multipart/form-data
+    
     data = request.form.to_dict()
-    files = request.files.to_dict()
     name = data.get("name")
     phone = data.get("phone")
     email = data.get("email")
     address = data.get("address")
     slogan = data.get("slogan")
+    logo = request.files.get('logo')
+    
+    file_name = None
+    if logo:
+        #validate image
+        validate_image(logo)
+        file_name = save_uploaded_file(logo)
 
-    logo_filename = ""
-    if "file" in request.files:
-        file = request.files["file"]
-        if file.filename != "" and allowed_file(file.filename):
-            filepath = os.path.join(current_app.config["UPLOAD_FOLDER"], file.filename)
-            file.save(filepath)
-            logo_filename = file.filename
 
+    logger.info(f"filename: {file_name}")
     validated_data = CreateOrganization(
         name=name,
         phone=phone,
         email=email,
         address=address,
         slogan=slogan,
-        logo=logo_filename
+        logo=file_name
     )
 
     
     organization = organization_service.create_organization(validated_data)
+    # return organization.to_dict()
     return success_response(
             status_code=HTTPStatus.OK,
             message= "Organization created successfully",
-            data = CreateOrganization(organization).model_dump()
+            data = CreateOrganization.model_validate(organization).model_dump()
         )
 
 
 
 
 @organization_routes.route("/organizations", methods=["GET"])
-def get_organizations(organization_service: OrganizationService):
+def fetch_all_organizations(organization_service: OrganizationService):
     organizations = organization_service.fetch_all_organizations()
-    data = []
-    for org in organizations:
-        org_data = {
-                "id": org.id,
-                "name": org.name,
-                "phone": org.phone,
-                "email": org.email,
-                "users": len(org.users),
-                "departments": len(org.departments),
-                "faculties": len(org.faculties),
-            }
-        data.append(org_data)
-        return success_response(
-            status_code=HTTPStatus.OK,
-            message="Successfully got all organizations",
-            data=data
-        )
+    data = [CreateOrganization.model_validate(org).model_dump() for org in organizations]
+    return success_response(
+        status_code=HTTPStatus.OK,
+        message="Successfully got all organizations",
+        data=data
+    )
 
 
 
 @organization_routes.route("/organization/<id>", methods=["GET"])
-def get_organization(id, organization_service: OrganizationService):
+def fetch_one_organization(id, organization_service: OrganizationService):
     organization_id = uuid.UUID(id)
     org = organization_service.fetch_one_organization(organization_id)
-    org_data = {
-            "id": org.id,
-            "name": org.name,
-            "phone": org.phone,
-            "email": org.email,
-            "slogan": org.slogan,
-            "logo": request.host_url + "qplus/api/uploads/" + org.logo
-            if org.logo
-            else None,
-            "address": org.address,
-        }
+    data = CreateOrganization.model_validate(org).model_dump()
     return success_response(
-            status_code=HTTPStatus.OK,
-            message="Successfully got organization",
-            data=org_data
-        )
+        status_code=HTTPStatus.OK,
+        message="Successfully got organization",
+        data=data
+    )
 
 
 
@@ -147,18 +193,12 @@ def update_organization(id, organization_service: OrganizationService):
         update_data["logo"] = logo_filename
 
     organization = organization_service.update_organization(organization_id, update_data)
+    data = UpdateOrganization.model_validate(organization).model_dump()
     return success_response(
-            status_code=HTTPStatus.OK,
-            message="Organization updated successfully",
-            data=UpdateOrganization(
-                name=organization.name,
-                phone=organization.phone,
-                email=organization.email,
-                address=organization.address,
-                slogan=organization.slogan,
-                logo=organization.logo
-            ).model_dump()
-        )
+        status_code=HTTPStatus.OK,
+        message="Organization updated successfully",
+        data=data
+    )
 
 
 
@@ -170,4 +210,3 @@ def delete_organization(id, organization_service: OrganizationService):
             status_code=HTTPStatus.OK,
             message="Organization deleted successfully"
         )
-

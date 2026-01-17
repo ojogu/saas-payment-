@@ -24,17 +24,13 @@ def create_app():
     app=Flask(__name__)
     
     #db configs
-    # drop_tables(app)
+    drop_tables(app)
     create_tables(app)
     init_db(app)
     close_db(app)
     debug_database()
     
-    #error handling
-    register_error_handlers(app)
-    
-    #setup depedencies
-    setup_dependencies(app)
+
     
     jwt.init_app(app)
     
@@ -60,6 +56,11 @@ def create_app():
     app.register_blueprint(notification_routes, url_prefix = "/api")
     app.register_blueprint(clearance_edits, url_prefix = "/api")
 
+    #error handling
+    register_error_handlers(app)
+    
+    #setup depedencies
+    setup_dependencies(app)
     return app
 
 app = create_app()

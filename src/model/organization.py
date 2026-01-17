@@ -15,7 +15,7 @@ class Organization(BaseModel):
         String(120), nullable=True, unique=True
     )
     logo: Mapped[Optional[str]] = mapped_column(String(120), nullable=True, unique=True)
-    email: Mapped[Optional[str]] = mapped_column(
+    email: Mapped[str] = mapped_column(
         String(120), nullable=True, unique=True
     )
     address: Mapped[Optional[str]] = mapped_column(

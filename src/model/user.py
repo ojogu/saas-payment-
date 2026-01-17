@@ -1,6 +1,7 @@
 from datetime import datetime
 from enum import IntEnum, StrEnum
 from typing import List, Optional
+import uuid
 
 from sqlalchemy import DateTime, ForeignKey, String, Enum as SqlEnum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -30,26 +31,26 @@ class User(BaseModel):
     matric_number: Mapped[Optional[str]] = mapped_column(
         String(50), nullable=True, unique=True, index=True
     )
-    phone_number: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
-    level: Mapped[Level_Enum] = mapped_column(
-        SqlEnum(Level_Enum, name="level_enum"),  nullable=False)
+    phone_number: Mapped[str] = mapped_column(String(50), nullable=False)
+    level: Mapped[Optional[Level_Enum]] = mapped_column(
+        SqlEnum(Level_Enum, name="level_enum"),  nullable=True)
     password_hash: Mapped[str] = mapped_column(String(128), nullable=False)
     role: Mapped[Role_Enum] = mapped_column(
         SqlEnum(Role_Enum, name="role_enum"),  nullable=False)
     
-    organization_id: Mapped[Optional[int]] = mapped_column(
+    organization_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("organizations.id"), nullable=True
     )
-    faculty_id: Mapped[Optional[int]] = mapped_column(
+    faculty_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("faculties.id"), nullable=True
     )
-    department_id: Mapped[Optional[int]] = mapped_column(
+    department_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("departments.id"), nullable=True
     )
-    clearance_point_id: Mapped[Optional[int]] = mapped_column(
+    clearance_point_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("clearance_points.id"), nullable=True, default=None
     )
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now())
+
 
     # Relationships
     organization: Mapped[Optional["Organization"]] = relationship(  # noqa: F821 # type: ignore
@@ -69,11 +70,3 @@ class User(BaseModel):
     passport: Mapped[List["PassPorts"]] = relationship( # noqa: F821 # type: ignore
         back_populates="user", cascade="all, delete-orphan"
     )  # noqa: F821 # type: ignore
-
-    # def set_password(self, password: str) -> None:
-    #     self.password_hash = generate_password_hash(
-    #         password, method="pbkdf2:sha256", salt_length=12
-    #     )
-
-    # def check_password(self, password: str) -> bool:
-    #     return check_password_hash(self.password_hash, password)

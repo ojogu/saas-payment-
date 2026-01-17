@@ -1,12 +1,13 @@
+from http import HTTPStatus
 from io import BytesIO
-
 import jwt
+
+from dishka.integrations.flask import FromDishka, inject
 from flask import Blueprint, jsonify, request
 from openpyxl import load_workbook
-from sqlalchemy import or_
+from sqlalchemy import or_, select
 
-#everybody has the same default password except super admin. 
-#we have an update password endpoint where users can change their passwords
+from src.auth.authorization import RoleCheck
 from src.model import (
     ClearanceItem,
     ClearancePoint,
@@ -15,10 +16,21 @@ from src.model import (
     MultiClearanceItem,
     Organization,
     PassPorts,
+    Role_Enum,
     SchoolSession,
     User,
 )
+from src.schema.user import CreateUser
+from src.service.user_service import UserService
+from src.utils.config import config
 from src.utils.db import db
+from src.utils.log import setup_logger
+from src.utils.response import success_response
+
+logger = setup_logger(__name__, "user_route.log")
+
+# everybody has the same default password except super admin.
+# we have an update password endpoint where users can change their passwords
 
 ALLOWED_EXTENSIONS = {"xlsx"}
 
@@ -27,136 +39,250 @@ def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-user_routes = Blueprint("users", __name__)
+# Blueprints for modular organization by role
+super_admin_bp = Blueprint("super_admin", __name__)
+admin_bp = Blueprint("admin", __name__)
+subadmin_bp = Blueprint("subadmin", __name__)
+bursar_bp = Blueprint("bursar", __name__)
+data_bp = Blueprint("data", __name__)
+audit_bp = Blueprint("audit", __name__)
+student_bp = Blueprint("student", __name__)
+general_bp = Blueprint("general", __name__)
 
 
-@user_routes.route("/users/super-admin", methods=["POST"])
-def create_super_admin():
+# Super Admin Routes
+@super_admin_bp.route("/superadmin", methods=["POST"])
+@inject
+def create_super_admin(user_service: FromDishka[UserService]):
     data = request.get_json()
     firstname = data.get("firstname")
     lastname = data.get("lastname")
     email = data.get("email")
     phone = data.get("phone")
-
-    password = "super-admin-default@123"
     role = data.get("role")
 
-    new_user = User(
+    logger.info(f"Creating super admin: {firstname} {lastname}")
+
+    validated_data = CreateUser(
         firstname=firstname,
         lastname=lastname,
         email=email,
-        role=role,
-        password_hash=password,
-        level=None,
         phone_number=phone,
-        organization_id=None,
-        clearance_point_id=None,
-        department_id=None,
-        matric_number=None,
+        password=config.super_admin_password,
+        role=Role_Enum(role),
+        level=None,
     )
-    new_user.set_password(password)
-    try:
-        if User.query.filter(
-            or_(User.email == email, User.phone_number == phone)
-        ).first():
-            return jsonify({"message": "User may already exist or using this details"})
-        db.session.add(new_user)
-        db.session.commit()
-        return jsonify({"message": f"{role} Created successfully"})
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"message": str(e)}, 400)
+
+    user = user_service.create_user(validated_data)
+    return success_response(
+        status_code=HTTPStatus.OK,
+        message=f"{user.id} created successfully",
+        data=CreateUser.model_validate(user).model_dump(),
+    )
 
 
-@user_routes.route("/users/create", methods=["POST"])
-def create_user():
-    try:
-        SECRET_KEY = "balablu-01101"
-        print(request.headers.get("Authorization"))
-        decoded = jwt.decode(
-            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
-        )
-        user = decoded
-    except Exception:
-        return jsonify({"message": "Invalid auth token"})
-    if user.get("role") not in ["ADMIN", "SUPERADMIN", "BURSAR", "DATA", "AUDIT"]:
-        return jsonify({"message": "Unauthorized Access"}), 401
-    data = request.get_json()
+@super_admin_bp.route("/users", methods=["POST"])
+@inject
+@RoleCheck(["ADMIN", "SUPERADMIN", "BURSAR", "DATA", "AUDIT"])
+def create_user(user_service: FromDishka[UserService]):
+    data:dict = request.get_json()
+
+ 
+    # Get current user
+    current_user = user_service.get_current_user()
+    organization_id = current_user.get("organization_id")
+
     firstname = data.get("firstname")
     lastname = data.get("lastname")
     email = data.get("email")
     matric = data.get("matric")
     phone = data.get("phone")
     year = data.get("level")
-    password = "admin-default@123"
     role = data.get("role")
-    organization_id = user.get("organization_id")
     department_id = data.get("department_id")
     clearance_point_id = data.get("clearance_point_id")
 
+    # Set password based on role
     if role == "ADMIN":
-        password = "admin-default@123"
-    if role == "SUBADMIN":
-        password = "sub-admin-default@123"
-    if role == "BURSAR":
-        password = "bursar-default@123"
-    if role == "DATA":
-        password = "data-default@123"
+        password = config.admin_password
+    elif role == "SUBADMIN":
+        password = config.sub_admin_password
+    elif role == "BURSAR":
+        password = config.bursar_password
+    elif role == "DATA":
+        password = config.data_password
+    elif role == "AUDIT":
+        password = config.audit_password
+    else:
+        password = config.admin_password  # default
 
-    if role == "AUDIT":
-        password = "audit-default@123"
-
-    if user.get("role") == "SUPERADMIN":
-        organization_id = data.get("organization")
-    organization = Organization.query.filter_by(id=organization_id).first()
-    if not organization:
-        return jsonify({"message": "organization not found"})
-    department = None
-    level = None
-    if department_id:
-        if role in ["STUDENT"]:
-            department = Department.query.filter_by(
-                id=department_id, organization_id=organization.id
-            ).first()
-            if not department:
-                return jsonify(
-                    {
-                        "message": f"{department.name} does not exist in {organization.name}"
-                    }
-                )
-        if role == "STUDENT":
-            level = year
-    matric_number = None
-    if matric:
-        matric_number = matric
-    new_user = User(
+    validated_data = CreateUser(
         firstname=firstname,
         lastname=lastname,
         email=email,
-        role=role,
-        password_hash=password,
-        level=level,
+        matric_number=matric,
         phone_number=phone,
-        organization_id=organization.id,
+        level=year,
+        password=password,
+        role=Role_Enum(role),
+        organization_id=organization_id,
+        department_id=department_id,
         clearance_point_id=clearance_point_id,
-        department_id=department.id if department else None,
-        matric_number=matric_number,
     )
-    new_user.set_password(password)
+    # Handle organization
+    if current_user.get("role") == "SUPERADMIN":
+        organization_id = data.get("organization")
+    stmt = select(Organization).where(Organization.id == organization_id)
+    organization = db.session.execute(stmt).scalar_one_or_none()
+    if not organization:
+        return jsonify({"message": "organization not found"}), 400
+
+    # Handle department and level
+    department = None
+    level = None
+    faculty_id = None
+    if department_id and role == "STUDENT":
+        stmt = select(Department).where(
+            Department.id == department_id, Department.organization_id == organization.id
+        )
+        department = db.session.execute(stmt).scalar_one_or_none()
+        if not department:
+            return jsonify({"message": f"Department not found in {organization.name}"}), 400
+        faculty_id = department.faculty_id
+        level = year
+
+    matric_number = matric if matric else None
+
+    logger.info(f"Creating user: {firstname} {lastname} with role {role}")
+
+    validated_data = CreateUser(
+        firstname=firstname,
+        lastname=lastname,
+        email=email,
+        matric_number=matric_number,
+        phone_number=phone,
+        level=level,
+        password=password,
+        role=Role_Enum(role),
+        organization_id=organization.id,
+        faculty_id=faculty_id,
+        department_id=department.id if department else None,
+        clearance_point_id=clearance_point_id,
+    )
+
     try:
-        if User.query.filter(
-            or_(User.email == email, User.phone_number == phone)
-        ).first():
-            return jsonify({"message": "User may already exist or using this details"})
-        db.session.add(new_user)
-        db.session.commit()
-        return jsonify({"message": f"{role} Created successfully"})
+        created_user = user_service.create_user(validated_data)
+        return success_response(
+            status_code=HTTPStatus.OK,
+            message=f"{role} created successfully",
+            data=CreateUser.model_validate(created_user).model_dump(),
+        )
     except Exception as e:
-        db.session.rollback()
+        logger.error(f"Error creating user: {e}")
         return jsonify({"message": str(e)}, 400)
 
 
-@user_routes.route("/users/create/admin", methods=["POST"])
+@super_admin_bp.route("users/<role>/update", methods=["PUT"])
+def update_users(role):
+    try:
+        SECRET_KEY = "balablu-01101"
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        admin = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if admin.get("role") not in ["ADMIN", "SUPERADMIN", "BURSAR", "DATA"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    data = request.get_json()
+    id = data.get("id")
+    firstname = data.get("firstname")
+    lastname = data.get("lastname")
+    middlename = data.get("middlename")
+    email = data.get("email")
+    phone_number = data.get("phone")
+    matric = data.get("matric")
+    level = data.get("level")
+    department_id = data.get("department_id")
+    clearance_point_id = data.get("clearance_point_id")
+    passport = data.get("passport")
+
+    if role == "STUDENT":
+        user = User.query.filter_by(id=id).first()
+        pass_image = PassPorts.query.filter_by(student_id=user.id).first()
+        department = Department.query.filter_by(id=department_id).first()
+        user.firstname = firstname
+        user.middlename = middlename
+        user.lastname = lastname
+        user.email = email
+        user.level = level
+        if department:
+            user.department_id = department_id
+        if matric != "":
+            user.matric_number = matric
+        user.faculty_id = department.faculty_id
+        if passport != None and pass_image == None:
+            new_passport = PassPorts(
+                student_id=user.id,
+                file_url=passport,
+            )
+            db.session.add(new_passport)
+            db.session.commit()
+        elif pass_image != None and passport != None:
+            pass_image.file_url = passport
+
+    if role == "SUBADMIN":
+        if clearance_point_id == "" or clearance_point_id == None:
+            return jsonify({"message": "Clearance Office is compulsory"})
+        user = User.query.filter_by(id=id).first()
+        user.firstname = firstname
+        user.lastname = lastname
+        user.email = email
+        user.phone_number = phone_number
+        user.clearance_point_id = clearance_point_id
+    if role in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        user = User.query.filter_by(id=id).first()
+        user.firstname = firstname
+        user.lastname = lastname
+        user.email = email
+        user.phone_number = phone_number
+        if admin.get("role") == "SUPERADMIN":
+            user.organization_id = data.get("organization_id")
+    if role in ["SUPERADMIN"]:
+        user = User.query.filter_by(id=id).first()
+        user.firstname = firstname
+        user.lastname = lastname
+        user.email = email
+        user.phone_number = phone_number
+    # user.set_password('default@123')
+    db.session.commit()
+    return jsonify({"message": "Successfully Updated"})
+
+
+@super_admin_bp.route("users/<role>/<email>", methods=["DELETE"])
+def delete_user(email, role):
+    # try:
+    #     SECRET_KEY="balablu-01101"
+    #     print(request.headers.get('Authorization'))
+    #     decoded=jwt.decode(request.headers.get('Authorization'),SECRET_KEY,algorithms=["HS256"])
+    #     user=decoded
+    # except Exception as e:
+    #    return jsonify({"message":f"Invalid auth token"})
+    # if user.get('role') not in ['ADMIN','SUPERADMIN','DATA']:
+    #     return jsonify({'message':"Unauthorized Access"}),401
+    items = User.query.filter_by(email=email, role=role).all()
+    for item in items:
+        if not item:
+            return jsonify({"error": "User not found"}), 404
+
+        db.session.delete(item)
+        db.session.commit()
+
+    return jsonify({"message": "User deleted successfully"}), 200
+
+
+# Admin Routes
+@admin_bp.route("/users/create/admin", methods=["POST"])
 def create_user_admin():
     try:
         SECRET_KEY = "balablu-01101"
@@ -176,7 +302,7 @@ def create_user_admin():
     matric = data.get("matric")
     phone = data.get("phone")
     year = data.get("level")
-    password = "admin-default@123"
+    password = config.admin_password
     role = data.get("role")
     organization_id = user.get("organization_id")
     department_id = data.get("department_id")
@@ -229,7 +355,7 @@ def create_user_admin():
         return jsonify({"message": str(e)}, 400)
 
 
-@user_routes.route("users/<role>", methods=["GET"])
+@admin_bp.route("users/<role>", methods=["GET"])
 def get_users_by_role(role):
     try:
         SECRET_KEY = "balablu-01101"
@@ -316,7 +442,7 @@ def get_users_by_role(role):
     return jsonify({"message": "successfully got all users", "data": data})
 
 
-@user_routes.route("users/point", methods=["POST"])
+@admin_bp.route("users/point", methods=["POST"])
 def get_users_by_point():
     try:
         SECRET_KEY = "balablu-01101"
@@ -365,7 +491,7 @@ def get_users_by_point():
     )
 
 
-@user_routes.route("users/STUDENT/<page>", methods=["GET"])
+@admin_bp.route("users/STUDENT/<page>", methods=["GET"])
 def get_all_students(page):
     try:
         SECRET_KEY = "balablu-01101"
@@ -440,7 +566,7 @@ def get_all_students(page):
     return jsonify({"message": "successfully got all users", "data": data})
 
 
-@user_routes.route("users/students", methods=["GET"])
+@admin_bp.route("users/students", methods=["GET"])
 def get_total_students():
     try:
         SECRET_KEY = "balablu-01101"
@@ -460,7 +586,7 @@ def get_total_students():
     return jsonify({"message": "success", "total": len(users)})
 
 
-@user_routes.route("users/<faculty_id>/<role>", methods=["GET"])
+@admin_bp.route("users/<faculty_id>/<role>", methods=["GET"])
 def get_users_by_faculty(faculty_id, role):
     try:
         SECRET_KEY = "balablu-01101"
@@ -515,7 +641,7 @@ def get_users_by_faculty(faculty_id, role):
     return jsonify({"message": "successfully got all users", "data": data})
 
 
-@user_routes.route("users/department/<dept_id>/<role>", methods=["GET"])
+@admin_bp.route("users/department/<dept_id>/<role>", methods=["GET"])
 def get_users_by_dept(dept_id, role):
     try:
         SECRET_KEY = "balablu-01101"
@@ -570,7 +696,7 @@ def get_users_by_dept(dept_id, role):
     return jsonify({"message": "successfully got all users", "data": data})
 
 
-@user_routes.route("users/student/<path:matric>", methods=["GET"])
+@admin_bp.route("users/student/<path:matric>", methods=["GET"])
 def get_student(matric):
     try:
         SECRET_KEY = "balablu-01101"
@@ -625,7 +751,7 @@ def get_student(matric):
     return jsonify({"message": "successfully got all users", "data": data})
 
 
-@user_routes.route("users/student/filter/<path:name>", methods=["GET"])
+@admin_bp.route("users/student/filter/<path:name>", methods=["GET"])
 def filter_student(name):
     try:
         SECRET_KEY = "balablu-01101"
@@ -682,84 +808,57 @@ def filter_student(name):
     return jsonify({"message": "successfully got all users", "data": data})
 
 
-@user_routes.route("users/<role>/update", methods=["PUT"])
-def update_users(role):
+# Subadmin Routes
+@subadmin_bp.route("users/point", methods=["POST"])
+def get_users_by_point():
     try:
         SECRET_KEY = "balablu-01101"
         decoded = jwt.decode(
             request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
         )
-        admin = decoded
+        user = decoded
     except Exception:
         return jsonify({"message": "Invalid auth token"})
-    if admin.get("role") not in ["ADMIN", "SUPERADMIN", "BURSAR", "DATA"]:
+    if user.get("role") not in ["ADMIN", "SUPERADMIN", "BURSAR", "SUBADMIN"]:
         return jsonify({"message": "Unauthorized Access"}), 401
+
+    if user.get("role") == "SUBADMIN":
+        users = User.query.filter_by(
+            clearance_point_id=user.get("clearance_point_id")
+        ).all()
     data = request.get_json()
-    id = data.get("id")
-    firstname = data.get("firstname")
-    lastname = data.get("lastname")
-    middlename = data.get("middlename")
-    email = data.get("email")
-    phone_number = data.get("phone")
-    matric = data.get("matric")
-    level = data.get("level")
-    department_id = data.get("department_id")
-    clearance_point_id = data.get("clearance_point_id")
-    passport = data.get("passport")
+    clearance_point_id = data.get("point_id")
+    if not clearance_point_id and user.get("role") != "SUBADMIN":
+        return jsonify(
+            {"status": "success", "message": "successfully got all users", "data": []}
+        )
+    users = User.query.filter_by(clearance_point_id=clearance_point_id).all()
+    if user.get("role") == "SUBADMIN":
+        users = User.query.filter_by(
+            clearance_point_id=user.get("clearance_point_id")
+        ).all()
+    data = []
+    for user in users:
+        org_data = {
+            "id": user.id,
+            "name": user.firstname + " " + user.lastname,
+            "first_name": user.firstname,
+            "last_name": user.lastname,
+            "department": "-",
+            "office": str(user.clearance_point.name).title(),
+            "clearance_point_id": user.clearance_point_id,
+            "email": user.email,
+            "phone": user.phone_number,
+        }
 
-    if role == "STUDENT":
-        user = User.query.filter_by(id=id).first()
-        pass_image = PassPorts.query.filter_by(student_id=user.id).first()
-        department = Department.query.filter_by(id=department_id).first()
-        user.firstname = firstname
-        user.middlename = middlename
-        user.lastname = lastname
-        user.email = email
-        user.level = level
-        if department:
-            user.department_id = department_id
-        if matric != "":
-            user.matric_number = matric
-        user.faculty_id = department.faculty_id
-        if passport != None and pass_image == None:
-            new_passport = PassPorts(
-                student_id=user.id,
-                file_url=passport,
-            )
-            db.session.add(new_passport)
-            db.session.commit()
-        elif pass_image != None and passport != None:
-            pass_image.file_url = passport
+        data.append(org_data)
 
-    if role == "SUBADMIN":
-        if clearance_point_id == "" or clearance_point_id == None:
-            return jsonify({"message": "Clearance Office is compulsory"})
-        user = User.query.filter_by(id=id).first()
-        user.firstname = firstname
-        user.lastname = lastname
-        user.email = email
-        user.phone_number = phone_number
-        user.clearance_point_id = clearance_point_id
-    if role in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
-        user = User.query.filter_by(id=id).first()
-        user.firstname = firstname
-        user.lastname = lastname
-        user.email = email
-        user.phone_number = phone_number
-        if admin.get("role") == "SUPERADMIN":
-            user.organization_id = data.get("organization_id")
-    if role in ["SUPERADMIN"]:
-        user = User.query.filter_by(id=id).first()
-        user.firstname = firstname
-        user.lastname = lastname
-        user.email = email
-        user.phone_number = phone_number
-    # user.set_password('default@123')
-    db.session.commit()
-    return jsonify({"message": "Successfully Updated"})
+    return jsonify(
+        {"status": "success", "message": "successfully got all users", "data": data}
+    )
 
 
-@user_routes.route("subadmin/<role>/<page>", methods=["GET"])
+@subadmin_bp.route("subadmin/<role>/<page>", methods=["GET"])
 def get_users_by_subadmin(role, page):
     try:
         SECRET_KEY = "balablu-01101"
@@ -859,34 +958,1344 @@ def get_users_by_subadmin(role, page):
     )
 
 
-@user_routes.route("/users/get", methods=["POST"])
-def get_user():
+@subadmin_bp.route("users/student/<path:matric>", methods=["GET"])
+def get_student(matric):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUBADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter_by(
+        organization_id=organization.id, role="STUDENT", matric_number=matric
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@subadmin_bp.route("users/student/filter/<path:name>", methods=["GET"])
+def filter_student(name):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUBADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter(
+        User.organization_id == organization.id,
+        User.role == "STUDENT",
+        User.lastname == str(name).upper(),
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+# Bursar Routes
+@bursar_bp.route("users/<role>", methods=["GET"])
+def get_users_by_role(role):
+    try:
+        SECRET_KEY = "balablu-01101"
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUPERADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    if user.get("role") == "SUPERADMIN":
+        users = User.query.filter_by(role=role).all()
+    else:
+        organization = Organization.query.filter_by(
+            id=user.get("organization_id")
+        ).first()
+        if not organization:
+            return jsonify({"message": "Organization not found"})
+
+        users = User.query.filter_by(organization_id=organization.id, role=role).all()
+
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        clearance_point = ClearancePoint.query.filter_by(
+            id=user.clearance_point_id
+        ).first()
+        if department:
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+            }
+        elif clearance_point:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "first_name": user.firstname,
+                "last_name": user.lastname,
+                "department": "-",
+                "office": str(user.clearance_point.name).title(),
+                "clearance_point_id": user.clearance_point_id,
+                "email": user.email,
+                "phone": user.phone_number,
+                "organization": organization.name,
+            }
+        elif not user.organization:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "first_name": user.firstname,
+                "last_name": user.lastname,
+                "email": user.email,
+                "phone": user.phone_number,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "first_name": user.firstname,
+                "last_name": user.lastname,
+                "department": "-",
+                "office": str(user.clearance_point.name).title()
+                if user.clearance_point_id != None
+                else None,
+                "email": user.email,
+                "phone": user.phone_number,
+                "organization": user.organization.name,
+                "organization_id": user.organization.id,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@bursar_bp.route("users/point", methods=["POST"])
+def get_users_by_point():
+    try:
+        SECRET_KEY = "balablu-01101"
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUPERADMIN", "BURSAR", "SUBADMIN"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+
+    if user.get("role") == "SUBADMIN":
+        users = User.query.filter_by(
+            clearance_point_id=user.get("clearance_point_id")
+        ).all()
     data = request.get_json()
-    get_with = data.get("get_with")
-    query = data.get("query")
-    if get_with == "email":
-        user = User.query.filter_by(email=query).first()
-    elif get_with == "matric_number":
-        user = User.query.filter_by(matric_number=query).first()
-    if user.department_id:
-        dept = Department.query.filter_by(id=user.department_id).first()
-    if user.organization_id:
-        org = Organization.query.filter_by(id=user.organization_id).first()
-    user_data = {
-        "firstname": user.firstname,
-        "lastname": user.lastname,
-        "email": user.email,
-        "phone": user.phone_number,
-        "role": user.role,
-        "department": dept.name if dept else None,
-        "organization": org.name if org else None,
-    }
+    clearance_point_id = data.get("point_id")
+    if not clearance_point_id and user.get("role") != "SUBADMIN":
+        return jsonify(
+            {"status": "success", "message": "successfully got all users", "data": []}
+        )
+    users = User.query.filter_by(clearance_point_id=clearance_point_id).all()
+    if user.get("role") == "SUBADMIN":
+        users = User.query.filter_by(
+            clearance_point_id=user.get("clearance_point_id")
+        ).all()
+    data = []
+    for user in users:
+        org_data = {
+            "id": user.id,
+            "name": user.firstname + " " + user.lastname,
+            "first_name": user.firstname,
+            "last_name": user.lastname,
+            "department": "-",
+            "office": str(user.clearance_point.name).title(),
+            "clearance_point_id": user.clearance_point_id,
+            "email": user.email,
+            "phone": user.phone_number,
+        }
+
+        data.append(org_data)
+
     return jsonify(
-        {"message": f"successfully found {user.role} user", "data": user_data}
+        {"status": "success", "message": "successfully got all users", "data": data}
     )
 
 
-@user_routes.route("/students/bulk-upload", methods=["POST"])
+@bursar_bp.route("users/STUDENT/<page>", methods=["GET"])
+def get_all_students(page):
+    try:
+        SECRET_KEY = "balablu-01101"
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+
+    users = (
+        User.query.filter_by(organization_id=organization.id, role="STUDENT")
+        .offset((int(page) - 1) * 10)
+        .limit(10)
+        .all()
+    )
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        clearance_point = ClearancePoint.query.filter_by(
+            id=user.clearance_point_id
+        ).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        elif clearance_point:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "-",
+                "office": str(user.clearance_point.name).title(),
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "-",
+                "office": user.clearance_point.name
+                if user.clearance_point_id != None
+                else None,
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@bursar_bp.route("users/<faculty_id>/<role>", methods=["GET"])
+def get_users_by_faculty(faculty_id, role):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter_by(
+        organization_id=organization.id, role=role, faculty_id=faculty_id
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@bursar_bp.route("users/department/<dept_id>/<role>", methods=["GET"])
+def get_users_by_dept(dept_id, role):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter_by(
+        organization_id=organization.id, role=role, department_id=dept_id
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@bursar_bp.route("users/student/<path:matric>", methods=["GET"])
+def get_student(matric):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUBADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter_by(
+        organization_id=organization.id, role="STUDENT", matric_number=matric
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@bursar_bp.route("users/student/filter/<path:name>", methods=["GET"])
+def filter_student(name):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUBADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter(
+        User.organization_id == organization.id,
+        User.role == "STUDENT",
+        User.lastname == str(name).upper(),
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+# Data Routes
+@data_bp.route("users/<role>", methods=["GET"])
+def get_users_by_role(role):
+    try:
+        SECRET_KEY = "balablu-01101"
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUPERADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    if user.get("role") == "SUPERADMIN":
+        users = User.query.filter_by(role=role).all()
+    else:
+        organization = Organization.query.filter_by(
+            id=user.get("organization_id")
+        ).first()
+        if not organization:
+            return jsonify({"message": "Organization not found"})
+
+        users = User.query.filter_by(organization_id=organization.id, role=role).all()
+
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        clearance_point = ClearancePoint.query.filter_by(
+            id=user.clearance_point_id
+        ).first()
+        if department:
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+            }
+        elif clearance_point:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "first_name": user.firstname,
+                "last_name": user.lastname,
+                "department": "-",
+                "office": str(user.clearance_point.name).title(),
+                "clearance_point_id": user.clearance_point_id,
+                "email": user.email,
+                "phone": user.phone_number,
+                "organization": organization.name,
+            }
+        elif not user.organization:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "first_name": user.firstname,
+                "last_name": user.lastname,
+                "email": user.email,
+                "phone": user.phone_number,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "first_name": user.firstname,
+                "last_name": user.lastname,
+                "department": "-",
+                "office": str(user.clearance_point.name).title()
+                if user.clearance_point_id != None
+                else None,
+                "email": user.email,
+                "phone": user.phone_number,
+                "organization": user.organization.name,
+                "organization_id": user.organization.id,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@data_bp.route("users/students", methods=["GET"])
+def get_total_students():
+    try:
+        SECRET_KEY = "balablu-01101"
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+
+    users = User.query.filter_by(organization_id=organization.id, role="STUDENT").all()
+    return jsonify({"message": "success", "total": len(users)})
+
+
+@data_bp.route("users/<faculty_id>/<role>", methods=["GET"])
+def get_users_by_faculty(faculty_id, role):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter_by(
+        organization_id=organization.id, role=role, faculty_id=faculty_id
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@data_bp.route("users/department/<dept_id>/<role>", methods=["GET"])
+def get_users_by_dept(dept_id, role):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter_by(
+        organization_id=organization.id, role=role, department_id=dept_id
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@data_bp.route("users/STUDENT/<page>", methods=["GET"])
+def get_all_students(page):
+    try:
+        SECRET_KEY = "balablu-01101"
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+
+    users = (
+        User.query.filter_by(organization_id=organization.id, role="STUDENT")
+        .offset((int(page) - 1) * 10)
+        .limit(10)
+        .all()
+    )
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        clearance_point = ClearancePoint.query.filter_by(
+            id=user.clearance_point_id
+        ).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        elif clearance_point:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "-",
+                "office": str(user.clearance_point.name).title(),
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "-",
+                "office": user.clearance_point.name
+                if user.clearance_point_id != None
+                else None,
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@data_bp.route("users/student/<path:matric>", methods=["GET"])
+def get_student(matric):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUBADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter_by(
+        organization_id=organization.id, role="STUDENT", matric_number=matric
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@data_bp.route("users/student/filter/<path:name>", methods=["GET"])
+def filter_student(name):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUBADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter(
+        User.organization_id == organization.id,
+        User.role == "STUDENT",
+        User.lastname == str(name).upper(),
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+# Audit Routes
+@audit_bp.route("users/<role>", methods=["GET"])
+def get_users_by_role(role):
+    try:
+        SECRET_KEY = "balablu-01101"
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUPERADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    if user.get("role") == "SUPERADMIN":
+        users = User.query.filter_by(role=role).all()
+    else:
+        organization = Organization.query.filter_by(
+            id=user.get("organization_id")
+        ).first()
+        if not organization:
+            return jsonify({"message": "Organization not found"})
+
+        users = User.query.filter_by(organization_id=organization.id, role=role).all()
+
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        clearance_point = ClearancePoint.query.filter_by(
+            id=user.clearance_point_id
+        ).first()
+        if department:
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+            }
+        elif clearance_point:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "first_name": user.firstname,
+                "last_name": user.lastname,
+                "department": "-",
+                "office": str(user.clearance_point.name).title(),
+                "clearance_point_id": user.clearance_point_id,
+                "email": user.email,
+                "phone": user.phone_number,
+                "organization": organization.name,
+            }
+        elif not user.organization:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "first_name": user.firstname,
+                "last_name": user.lastname,
+                "email": user.email,
+                "phone": user.phone_number,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "first_name": user.firstname,
+                "last_name": user.lastname,
+                "department": "-",
+                "office": str(user.clearance_point.name).title()
+                if user.clearance_point_id != None
+                else None,
+                "email": user.email,
+                "phone": user.phone_number,
+                "organization": user.organization.name,
+                "organization_id": user.organization.id,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@audit_bp.route("users/<faculty_id>/<role>", methods=["GET"])
+def get_users_by_faculty(faculty_id, role):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter_by(
+        organization_id=organization.id, role=role, faculty_id=faculty_id
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@audit_bp.route("users/department/<dept_id>/<role>", methods=["GET"])
+def get_users_by_dept(dept_id, role):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter_by(
+        organization_id=organization.id, role=role, department_id=dept_id
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@audit_bp.route("users/STUDENT/<page>", methods=["GET"])
+def get_all_students(page):
+    try:
+        SECRET_KEY = "balablu-01101"
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+
+    users = (
+        User.query.filter_by(organization_id=organization.id, role="STUDENT")
+        .offset((int(page) - 1) * 10)
+        .limit(10)
+        .all()
+    )
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        clearance_point = ClearancePoint.query.filter_by(
+            id=user.clearance_point_id
+        ).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        elif clearance_point:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "-",
+                "office": str(user.clearance_point.name).title(),
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "-",
+                "office": user.clearance_point.name
+                if user.clearance_point_id != None
+                else None,
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@audit_bp.route("users/student/<path:matric>", methods=["GET"])
+def get_student(matric):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUBADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter_by(
+        organization_id=organization.id, role="STUDENT", matric_number=matric
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+@audit_bp.route("users/student/filter/<path:name>", methods=["GET"])
+def filter_student(name):
+    try:
+        SECRET_KEY = "balablu-01101"
+
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        user = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if user.get("role") not in ["ADMIN", "SUBADMIN", "BURSAR", "DATA", "AUDIT"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    organization = Organization.query.filter_by(id=user.get("organization_id")).first()
+    if not organization:
+        return jsonify({"message": "Organization not found"})
+    users = User.query.filter(
+        User.organization_id == organization.id,
+        User.role == "STUDENT",
+        User.lastname == str(name).upper(),
+    ).all()
+    data = []
+    for user in users:
+        department = Department.query.filter_by(id=user.department_id).first()
+        if department:
+            passport = PassPorts.query.filter_by(student_id=user.id).first()
+            org_data = {
+                "id": user.id,
+                "last_name": user.lastname,
+                "first_name": user.firstname,
+                "middle": user.middlename,
+                "department": str(department.name).title(),
+                "department_id": user.department_id,
+                "email": user.email,
+                "organization": organization.name,
+                "matric_number": user.matric_number,
+                "level": user.level,
+                "faculty": str(department.faculty.name).title(),
+                "passport": "https://myclearance.qplusgnl.com/uploads/"
+                + passport.file_url
+                if passport
+                else None,
+            }
+        else:
+            org_data = {
+                "id": user.id,
+                "name": user.firstname + " " + user.lastname,
+                "department": "Random",
+                "email": user.email,
+                "organization": organization.name,
+                "matric": user.matric_number,
+                "level": user.level,
+            }
+        data.append(org_data)
+    return jsonify({"message": "successfully got all users", "data": data})
+
+
+# Student Routes
+@student_bp.route("/students/bulk-upload", methods=["POST"])
 def bulk_upload_users():
     try:
         SECRET_KEY = "balablu-01101"
@@ -1004,7 +2413,84 @@ def bulk_upload_users():
     ), 201
 
 
-@user_routes.route("users/<role>/<email>", methods=["DELETE"])
+@student_bp.route("users/<role>/update", methods=["PUT"])
+def update_users(role):
+    try:
+        SECRET_KEY = "balablu-01101"
+        decoded = jwt.decode(
+            request.headers.get("Authorization"), SECRET_KEY, algorithms=["HS256"]
+        )
+        admin = decoded
+    except Exception:
+        return jsonify({"message": "Invalid auth token"})
+    if admin.get("role") not in ["ADMIN", "SUPERADMIN", "BURSAR", "DATA"]:
+        return jsonify({"message": "Unauthorized Access"}), 401
+    data = request.get_json()
+    id = data.get("id")
+    firstname = data.get("firstname")
+    lastname = data.get("lastname")
+    middlename = data.get("middlename")
+    email = data.get("email")
+    phone_number = data.get("phone")
+    matric = data.get("matric")
+    level = data.get("level")
+    department_id = data.get("department_id")
+    clearance_point_id = data.get("clearance_point_id")
+    passport = data.get("passport")
+
+    if role == "STUDENT":
+        user = User.query.filter_by(id=id).first()
+        pass_image = PassPorts.query.filter_by(student_id=user.id).first()
+        department = Department.query.filter_by(id=department_id).first()
+        user.firstname = firstname
+        user.middlename = middlename
+        user.lastname = lastname
+        user.email = email
+        user.level = level
+        if department:
+            user.department_id = department_id
+        if matric != "":
+            user.matric_number = matric
+        user.faculty_id = department.faculty_id
+        if passport != None and pass_image == None:
+            new_passport = PassPorts(
+                student_id=user.id,
+                file_url=passport,
+            )
+            db.session.add(new_passport)
+            db.session.commit()
+        elif pass_image != None and passport != None:
+            pass_image.file_url = passport
+
+    if role == "SUBADMIN":
+        if clearance_point_id == "" or clearance_point_id == None:
+            return jsonify({"message": "Clearance Office is compulsory"})
+        user = User.query.filter_by(id=id).first()
+        user.firstname = firstname
+        user.lastname = lastname
+        user.email = email
+        user.phone_number = phone_number
+        user.clearance_point_id = clearance_point_id
+    if role in ["ADMIN", "BURSAR", "DATA", "AUDIT"]:
+        user = User.query.filter_by(id=id).first()
+        user.firstname = firstname
+        user.lastname = lastname
+        user.email = email
+        user.phone_number = phone_number
+        if admin.get("role") == "SUPERADMIN":
+            user.organization_id = data.get("organization_id")
+    if role in ["SUPERADMIN"]:
+        user = User.query.filter_by(id=id).first()
+        user.firstname = firstname
+        user.lastname = lastname
+        user.email = email
+        user.phone_number = phone_number
+    # user.set_password('default@123')
+    db.session.commit()
+    return jsonify({"message": "Successfully Updated"})
+
+
+@student_bp.route("users/<role>/<email>", methods=["DELETE"])
 def delete_user(email, role):
     # try:
     #     SECRET_KEY="balablu-01101"
@@ -1024,3 +2510,31 @@ def delete_user(email, role):
         db.session.commit()
 
     return jsonify({"message": "User deleted successfully"}), 200
+
+
+# General Routes
+@general_bp.route("/users/get", methods=["POST"])
+def get_user():
+    data = request.get_json()
+    get_with = data.get("get_with")
+    query = data.get("query")
+    if get_with == "email":
+        user = User.query.filter_by(email=query).first()
+    elif get_with == "matric_number":
+        user = User.query.filter_by(matric_number=query).first()
+    if user.department_id:
+        dept = Department.query.filter_by(id=user.department_id).first()
+    if user.organization_id:
+        org = Organization.query.filter_by(id=user.organization_id).first()
+    user_data = {
+        "firstname": user.firstname,
+        "lastname": user.lastname,
+        "email": user.email,
+        "phone": user.phone_number,
+        "role": user.role,
+        "department": dept.name if dept else None,
+        "organization": org.name if org else None,
+    }
+    return jsonify(
+        {"message": f"successfully found {user.role} user", "data": user_data}
+    )

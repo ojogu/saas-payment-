@@ -39,7 +39,7 @@ class AccountPoints(BaseModel):
     clearance_point_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("clearance_points.id"), nullable=False
     )
-    account_id: Mapped[Optional[int]] = mapped_column(
+    account_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("accounts.id"), nullable=True
     )
 

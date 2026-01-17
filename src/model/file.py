@@ -11,7 +11,7 @@ class Files(BaseModel):
     __tablename__ = "files"
 
     #fk
-    clearance_id: Mapped[Optional[int]] = mapped_column(
+    clearance_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("clearances.id"), nullable=True
     )
     
