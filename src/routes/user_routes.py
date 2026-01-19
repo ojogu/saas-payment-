@@ -1,12 +1,12 @@
 from http import HTTPStatus
 from io import BytesIO
+from flask_jwt_extended import jwt_required
 import jwt
 
 from dishka.integrations.flask import FromDishka, inject
 from flask import Blueprint, jsonify, request
 from openpyxl import load_workbook
 from sqlalchemy import or_, select
-
 from src.auth.authorization import RoleCheck
 from src.model import (
     ClearanceItem,
@@ -51,7 +51,8 @@ general_bp = Blueprint("general", __name__)
 
 
 # Super Admin Routes
-@super_admin_bp.route("/superadmin", methods=["POST"])
+@super_admin_bp.route("/create", methods=["POST"])
+# @jwt_required()
 @inject
 def create_super_admin(user_service: FromDishka[UserService]):
     data = request.get_json()
@@ -82,16 +83,12 @@ def create_super_admin(user_service: FromDishka[UserService]):
 
 
 @super_admin_bp.route("/users", methods=["POST"])
+@jwt_required()
 @inject
-@RoleCheck(["ADMIN", "SUPERADMIN", "BURSAR", "DATA", "AUDIT"])
-def create_user(user_service: FromDishka[UserService]):
-    data:dict = request.get_json()
+def create_user(user_service: FromDishka[UserService], role_check: FromDishka[RoleCheck]):
+    data: dict = request.get_json()
 
- 
-    # Get current user
-    current_user = user_service.get_current_user()
-    organization_id = current_user.get("organization_id")
-
+    # Extract data from request
     firstname = data.get("firstname")
     lastname = data.get("lastname")
     email = data.get("email")
@@ -99,87 +96,56 @@ def create_user(user_service: FromDishka[UserService]):
     phone = data.get("phone")
     year = data.get("level")
     role = data.get("role")
-    department_id = data.get("department_id")
-    clearance_point_id = data.get("clearance_point_id")
+    # department_id = data.get("department_id")
+    # clearance_point_id = data.get("clearance_point_id")
+
+    # Check role
+    role_check.check([Role_Enum.ADMIN, Role_Enum.SUPER_ADMIN, Role_Enum.BURSAR, Role_Enum.DATA, Role_Enum.AUDIT])
+
+    # Get current user
+    current_user = user_service.get_current_user()
 
     # Set password based on role
-    if role == "ADMIN":
+    if role == Role_Enum.ADMIN:
         password = config.admin_password
-    elif role == "SUBADMIN":
+    elif role == Role_Enum.SUB_ADMIN:
         password = config.sub_admin_password
-    elif role == "BURSAR":
+    elif role == Role_Enum.BURSAR:
         password = config.bursar_password
-    elif role == "DATA":
+    elif role == Role_Enum.DATA:
         password = config.data_password
-    elif role == "AUDIT":
+    elif role == Role_Enum.AUDIT:
         password = config.audit_password
     else:
         password = config.admin_password  # default
-
-    validated_data = CreateUser(
-        firstname=firstname,
-        lastname=lastname,
-        email=email,
-        matric_number=matric,
-        phone_number=phone,
-        level=year,
-        password=password,
-        role=Role_Enum(role),
-        organization_id=organization_id,
-        department_id=department_id,
-        clearance_point_id=clearance_point_id,
-    )
-    # Handle organization
-    if current_user.get("role") == "SUPERADMIN":
-        organization_id = data.get("organization")
-    stmt = select(Organization).where(Organization.id == organization_id)
-    organization = db.session.execute(stmt).scalar_one_or_none()
-    if not organization:
-        return jsonify({"message": "organization not found"}), 400
-
-    # Handle department and level
-    department = None
-    level = None
-    faculty_id = None
-    if department_id and role == "STUDENT":
-        stmt = select(Department).where(
-            Department.id == department_id, Department.organization_id == organization.id
-        )
-        department = db.session.execute(stmt).scalar_one_or_none()
-        if not department:
-            return jsonify({"message": f"Department not found in {organization.name}"}), 400
-        faculty_id = department.faculty_id
-        level = year
 
     matric_number = matric if matric else None
 
     logger.info(f"Creating user: {firstname} {lastname} with role {role}")
 
-    validated_data = CreateUser(
+    # Prepare user data
+    user_data = CreateUser(
         firstname=firstname,
         lastname=lastname,
         email=email,
         matric_number=matric_number,
         phone_number=phone,
-        level=level,
+        level=year,  # Use year as level, service will calculate if needed
         password=password,
         role=Role_Enum(role),
-        organization_id=organization.id,
-        faculty_id=faculty_id,
-        department_id=department.id if department else None,
-        clearance_point_id=clearance_point_id,
+        organization_id=current_user.organization_id,  # Will be overridden in service if SUPERADMIN
+        faculty_id=None,  # Will be set in service
+        # department_id=department_id,
+        # clearance_point_id=clearance_point_id,
     )
 
-    try:
-        created_user = user_service.create_user(validated_data)
-        return success_response(
-            status_code=HTTPStatus.OK,
-            message=f"{role} created successfully",
-            data=CreateUser.model_validate(created_user).model_dump(),
-        )
-    except Exception as e:
-        logger.error(f"Error creating user: {e}")
-        return jsonify({"message": str(e)}, 400)
+    # Use the business logic service method
+    created_user = user_service.business_logic_to_create_users(current_user, user_data)
+    return success_response(
+        status_code=HTTPStatus.OK,
+        message=f"{role} created successfully",
+        data=CreateUser.model_validate(created_user).model_dump(),
+    )
 
 
 @super_admin_bp.route("users/<role>/update", methods=["PUT"])

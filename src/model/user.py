@@ -9,10 +9,13 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from src.base.model import BaseModel
 
 class Role_Enum(StrEnum):
-    STUDENT = "student"
-    ADMIN = "admin"
-    SUPER_ADMIN = "super_admin"
-    SUB_ADMIN = "sub_admin"
+    STUDENT = "STUDENT"
+    ADMIN = "ADMIN"
+    SUPER_ADMIN = "SUPERADMIN"
+    SUB_ADMIN = "SUBADMIN"
+    DATA = "DATA"
+    BURSAR = "BURSAR"
+    AUDIT = "AUDIT"
     
 class Level_Enum(IntEnum):
     LEVEL_100 = 100

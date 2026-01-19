@@ -1,8 +1,8 @@
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
 from src.auth.service import verify_password, password_hash
-from src.model import Department, Organization, PassPorts, User, Role_Enum, Level_Enum
+from src.model import Department, Organization, PassPorts, SchoolSession, User, Role_Enum, Level_Enum
 from src.base.exception import (
     NotFoundError,
     AlreadyExistsError,
@@ -145,6 +145,7 @@ class UserService():
             if user_data.new_password != user_data.confirm_new_password:
                 logger.warning(f"Password update failed: New password confirmation mismatch for user {user_data.user_id}")
                 raise InvalidEmailPassword()
+            
 
             new_password_hash = password_hash(user_data.new_password)
             user.password = new_password_hash
@@ -167,6 +168,94 @@ class UserService():
     def reset_password():
         pass 
     
+    def business_logic_to_create_users(self, current_user:User, user_data:CreateUser):
+        try:
+            logger.info(f"Starting user creation process for role {user_data.role} by user {current_user.id}")
+
+            # Handle organization validation - ensure admin can only create users in their organization
+            organization_id = current_user.organization_id
+            logger.debug(f"Loading organization {organization_id} with departments")
+            stmt = select(Organization).options(selectinload(Organization.departments)).where(Organization.id == organization_id)
+            organization = self.db.execute(stmt).scalar_one_or_none()
+            if not organization:
+                logger.error(f"Organization {organization_id} not found for user {current_user.id}")
+                return None
+
+            logger.debug(f"Organization {organization.name} loaded successfully")
+
+            # Handle department and level logic
+            department = None
+            faculty_id = None
+            level = user_data.level
+
+            if current_user.department_id and user_data.role == Role_Enum.STUDENT:
+                logger.debug("Processing department logic for student creation")
+                # Since we already loaded organization with departments, find the department from the loaded collection
+                department = next((dept for dept in organization.departments if dept.id == current_user.department_id), None)
+                if not department:
+                    logger.error(f"Department {current_user.department_id} not found in organization {organization.name}")
+                    return None
+                faculty_id = department.faculty_id
+                logger.debug(f"Department {department.name} and faculty {faculty_id} assigned")
+
+                # TODO: Automatic level calculation based on matric number - commented out for now
+                # Keeping for future implementation when needed
+                # Calculate level based on matric number for students
+                # if user_data.matric_number:
+                #     try:
+                #         logger.debug(f"Calculating level for matric number {user_data.matric_number}")
+                #         code = user_data.matric_number.split("/")
+                #         if len(code) >= 2:
+                #             year = 2000 + int(code[0])
+                #             current_year = self.db.execute(
+                #                 select(SchoolSession).where(SchoolSession.is_active == True, SchoolSession.organization_id == organization.id)
+                #             ).scalar_one_or_none()
+                #             if current_year:
+                #                 years = current_year.end_year - year
+                #                 level = years * 100 if years >= 0 else None
+                #                 logger.debug(f"Calculated level: {level} (years: {years})")
+                #             else:
+                #                 logger.warning(f"No active session found for organization {organization.id}")
+                #     except (ValueError, IndexError) as e:
+                #         logger.warning(f"Failed to calculate level from matric number {user_data.matric_number}: {e}")
+                #         # Keep original level if calculation fails
+
+            # Prepare updated user data with computed fields
+            updated_user_data = CreateUser(
+                firstname=user_data.firstname,
+                lastname=user_data.lastname,
+                middlename=user_data.middlename,
+                email=user_data.email,
+                matric_number=user_data.matric_number,
+                phone_number=user_data.phone_number,
+                level=level,
+                password=user_data.password,
+                role=user_data.role,
+                organization_id=organization.id,
+                faculty_id=faculty_id,
+                department_id=department.id if department else user_data.department_id,
+                clearance_point_id=user_data.clearance_point_id
+            )
+
+            logger.info(f"User data prepared, calling create_user method for {user_data.email}")
+
+            # Reuse the existing create_user method
+            created_user = self.create_user(updated_user_data)
+            logger.info(f"User {created_user.id} ({created_user.email}) created successfully")
+            return created_user
+
+        except SQLAlchemyError as e:
+            logger.error(f"Database error during user creation: {e}")
+            self.db.rollback()
+            return None
+        except Exception as e:
+            logger.error(f"Unexpected error during user creation: {e}")
+            self.db.rollback()
+            return None
+        
+        
+            
+    
     def get_current_user(self):
         user_id = get_jwt_identity()
         if not user_id:
@@ -174,9 +263,4 @@ class UserService():
         user = self.check_if_user_exist_by_id(user_id)
         if not user:
             raise NotFoundError(f"{user_id} not found")
-        return {
-            "id": str(user.id),
-            "role": user.role.value,
-            "organization_id": user.organization_id,
-            "clearance_point_id": user.clearance_point_id,
-        }
+        return user

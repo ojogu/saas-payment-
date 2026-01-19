@@ -22,9 +22,9 @@ def get_clearnce_analytics():
         user = decoded
     except Exception:
         return jsonify({"message": "Invalid auth token"})
-    if user.get("role") not in ["ADMIN", "BURSAR", "SUPERADMIN", "SUBADMIN", "AUDIT"]:
+    if user.get("role") not in [Role_Enum.ADMIN, Role_Enum.BURSAR, Role_Enum.SUPER_ADMIN, Role_Enum.SUB_ADMIN, Role_Enum.AUDIT]:
         return jsonify({"message": "Unauthorized Access"}), 401
-    if user.get("role") in ["SUBADMIN", "BURSAR"]:
+    if user.get("role") in [Role_Enum.SUB_ADMIN, Role_Enum.BURSAR]:
         details = User.query.get(user.get("id"))
         organization_id = user.get("organization_id")
         query = db.session.query(Clearance).join(ClearanceItem).join(User)

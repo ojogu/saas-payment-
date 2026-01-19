@@ -2,10 +2,19 @@ from flask import Flask
 from src.auth.routes import auth_bp
 from src.routes.organization_routes import organization_routes
 from src.routes.department_routes import department_routes
-from src.routes.user_routes import user_routes
+from src.routes.user_routes import (
+    super_admin_bp,
+    admin_bp,
+    subadmin_bp,
+    bursar_bp,
+    data_bp,
+    audit_bp,
+    student_bp,
+    general_bp
+)
 from src.routes.clearance_routes import clearance_bp
 from src.routes.session_routes import session_route
-from src.routes.bursar_routes import bursar_route
+# from src.routes.bursar_routes import bursar_route
 from src.routes.faculty_routes import faculty_routes
 from src.routes.account_routes import account_bp
 from src.routes.clearance_points import clearance_point
@@ -43,9 +52,16 @@ def create_app():
     app.register_blueprint(auth_bp, url_prefix=f"{Settings.API_PREFIX}/auth")
     app.register_blueprint(organization_routes,url_prefix="/api")
     app.register_blueprint(department_routes,url_prefix="/api")
-    app.register_blueprint(user_routes,url_prefix="/api")
+    app.register_blueprint(super_admin_bp, url_prefix="/api/superadmin")
+    app.register_blueprint(admin_bp, url_prefix="/api/admin")
+    app.register_blueprint(subadmin_bp, url_prefix="/api/subadmin")
+    app.register_blueprint(bursar_bp, url_prefix="/api/bursar")
+    app.register_blueprint(data_bp, url_prefix="/api/data")
+    app.register_blueprint(audit_bp, url_prefix="/api/audit")
+    app.register_blueprint(student_bp, url_prefix="/api/student")
+    app.register_blueprint(general_bp, url_prefix="/api/general")
     app.register_blueprint(clearance_bp,url_prefix="/api")
-    app.register_blueprint(bursar_route,url_prefix="/api")
+    # app.register_blueprint(bursar_route,url_prefix="/api")
     app.register_blueprint(session_route,url_prefix="/api")
     app.register_blueprint(faculty_routes,url_prefix="/api")
     app.register_blueprint(account_bp,url_prefix="/api")
@@ -71,5 +87,3 @@ def index():
     return {"msg": "successful"}
 if __name__=='__main__':
     app.run(debug=True)
-    
-    
